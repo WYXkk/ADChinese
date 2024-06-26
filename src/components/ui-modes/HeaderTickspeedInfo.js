@@ -16,12 +16,12 @@ export default {
   },
   computed: {
     tickspeedDisplay() {
-      return `Total Tickspeed: ${format(this.tickspeed, 2, 3)} / sec`;
+      return `计数频率：${format(this.tickspeed, 2, 3)} / 秒`;
     },
     perUpgrade() {
-      if (InfinityChallenge(3).isRunning) return `Tickspeed upgrades give
-        ${formatX(1.05 + this.galaxyCount * 0.005, 3, 3)} to all ADs`;
-      return `ADs produce ${formatX(this.mult.reciprocal(), 2, 3)} faster per Tickspeed upgrade`;
+      if (InfinityChallenge(3).isRunning) return `每个升级所有反物质维度获得乘
+        ${formatX(1.05 + this.galaxyCount * 0.005, 3, 3)} 加成`;
+      return `每个升级增加 ${formatX(this.mult.reciprocal(), 2, 3)}`;
     },
   },
   methods: {

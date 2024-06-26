@@ -43,7 +43,7 @@ export default {
     v-if="shouldDisplay"
     class="c-prestige-button-container"
   >
-    <span>You have <span class="c-game-header__antimatter">{{ format(antimatter, 2, 1) }}</span> antimatter.</span>
+    <span>你拥有 <span class="c-game-header__antimatter">{{ format(antimatter, 2, 1) }}</span> 反物质。</span>
     <div
       v-if="hasRealityButton"
       class="c-reality-container"
@@ -57,7 +57,7 @@ export default {
       <RealityButton v-else />
     </div>
     <div v-else>
-      You are getting {{ format(antimatterPerSec, 2) }} antimatter per second.
+      你每秒获得 {{ format(antimatterPerSec, 2) }} 反物质。
       <br>
       <HeaderTickspeedInfo />
     </div>

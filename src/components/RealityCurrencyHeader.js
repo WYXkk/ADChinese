@@ -13,11 +13,11 @@ export default {
       if (this.isDoomed) {
         const shards = Currency.realityShards.value;
         this.currencyValue = format(shards, 2, 2);
-        this.currencyName = pluralize("Reality Shard", shards);
+        this.currencyName = pluralize("现实碎片", shards);
       } else {
         const rm = Currency.realityMachines.value;
         this.currencyValue = formatMachines(rm, Currency.imaginaryMachines.value);
-        this.currencyName = pluralize("Reality Machine", rm);
+        this.currencyName = pluralize("现实机器", rm);
       }
     },
     resourceClass() {
@@ -32,7 +32,7 @@ export default {
     class="c-reality-currency"
     data-v-reality-currency-header
   >
-    You have
+    你拥有
     <b
       :class="resourceClass()"
       data-v-reality-currency-header

@@ -26,7 +26,7 @@ export default {
       };
     },
     multiplierDisplay() {
-      if (InfinityChallenge(3).isRunning) return `所有反物质维度获得乘
+      if (InfinityChallenge(3).isRunning) return `每个升级所有反物质维度获得乘
         ${formatX(1.05 + this.galaxyCount * 0.005, 3, 3)} 加成`;
       const tickmult = this.mult;
       return `每个升级增加 ${formatX(tickmult.reciprocal(), 2, 3)}`;

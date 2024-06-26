@@ -37,9 +37,9 @@ export default {
       class="c-infinity-points"
       data-v-header-infinity-container
     >
-      You have
+      你拥有
       <span class="c-game-header__ip-amount">{{ format(infinityPoints, 2) }}</span>
-      {{ pluralize("Infinity Point", infinityPoints) }}.
+      {{ pluralize("无限点数", infinityPoints) }}.
       <span
         v-if="isTesseractUnlocked"
         v-html="tesseractText"
