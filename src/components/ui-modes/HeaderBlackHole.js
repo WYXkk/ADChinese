@@ -125,7 +125,7 @@ export default {
       <PrimaryToggleButton
         v-model="isAutoReleasing"
         class="o-primary-btn--buy-max c-primary-btn--black-hole-header"
-        label="Pulse:"
+        label="脉冲"
         data-v-header-black-hole
       />
     </span>
