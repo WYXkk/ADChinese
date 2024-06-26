@@ -15,11 +15,11 @@ export default {
   computed: {
     baseSpeedText() {
       if (this.isStopped) {
-        return "Stopped (storing real time)";
+        return "已停止 (储存现实时间)";
       }
       const speed = this.formatNumber(this.baseSpeed);
       if (this.isEC12) {
-        return `${speed} (fixed)`;
+        return `${speed} (固定值)`;
       }
       return `${speed}`;
     },
@@ -29,8 +29,8 @@ export default {
     baseText() {
       if (!this.hasSeenAlteredSpeed) return null;
       return this.baseSpeed === 1
-        ? "The game is running at normal speed."
-        : `Game speed is altered: ${this.baseSpeedText}`;
+        ? "游戏目前以正常速度运行。"
+        : `游戏速度倍率：${this.baseSpeedText}`;
     }
   },
   methods: {

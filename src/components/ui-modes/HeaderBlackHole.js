@@ -28,7 +28,7 @@ export default {
       return this.blackHole.id;
     },
     dischargeText() {
-      return `Discharge: ${timeDisplayShort(this.storedTime)}`;
+      return `释放：${timeDisplayShort(this.storedTime)}`;
     },
     hasLongText() {
       return this.dischargeText.length > 15;
@@ -54,12 +54,12 @@ export default {
       this.isAutoReleasing = player.celestials.enslaved.isAutoReleasing;
     },
     pauseButtonText() {
-      if (BlackHoles.arePaused && player.blackHoleNegative < 1) return "Uninvert BH";
-      if (BlackHoles.arePaused) return "Unpause BH";
+      if (BlackHoles.arePaused && player.blackHoleNegative < 1) return "解除反转黑洞";
+      if (BlackHoles.arePaused) return "恢复黑洞";
       const accel = BlackHoles.unpauseAccelerationFactor;
-      if (accel !== 1) return `${formatPercents(accel, 1)} speed`;
-      if (player.blackHoleNegative < 1) return "Invert BH";
-      return "Pause BH";
+      if (accel !== 1) return `${formatPercents(accel, 1)} 速度`;
+      if (player.blackHoleNegative < 1) return "反转黑洞";
+      return "暂停黑洞";
     },
     timeDisplayShort(ms) {
       return timeDisplayShort(ms);
@@ -91,10 +91,10 @@ export default {
         data-v-header-black-hole
       >
         <span v-if="isCharging">
-          Stop Charging
+          停止充能
         </span>
         <span v-else>
-          Charge
+          充能
         </span>
       </PrimaryButton>
     </span>

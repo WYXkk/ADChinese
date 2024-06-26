@@ -37,7 +37,7 @@ export default {
       class="c-infinity-points"
       data-v-header-infinity-container
     >
-      你拥有
+      你有
       <span class="c-game-header__ip-amount">{{ format(infinityPoints, 2) }}</span>
       {{ pluralize("无限点数", infinityPoints) }}.
       <span

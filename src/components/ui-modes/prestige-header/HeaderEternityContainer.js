@@ -36,7 +36,7 @@ export default {
       class="c-eternity-points"
       data-v-header-eternity-container
     >
-      你拥有
+      你有
       <span class="c-game-header__ep-amount">{{ format(eternityPoints, 2) }}</span>
       {{ pluralize("永恒点数", eternityPoints) }}.
       <span v-if="showNextEP">(下一个永恒点数需要 {{ format(nextEP, 1) }} 无限点数)</span>
