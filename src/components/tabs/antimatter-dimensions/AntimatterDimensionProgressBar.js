@@ -37,64 +37,64 @@ export default {
         Laitela.isRunning;
       if (inSpecialRun) {
         if (Player.isInAntimatterChallenge) {
-          setProgress(Currency.antimatter.value, Player.antimatterChallenge.goal, "Percentage to Challenge goal");
+          setProgress(Currency.antimatter.value, Player.antimatterChallenge.goal, "挑战进度");
         } else if (EternityChallenge.isRunning) {
           if (Perk.studyECBulk.isBought) {
             // Note: If the EC is fully complete, this prop doesn't exist
             const goal = EternityChallenge.current.gainedCompletionStatus.nextGoalAt;
             if (goal) {
-              setProgress(Currency.infinityPoints.value, goal, "Percentage to next Challenge completion");
+              setProgress(Currency.infinityPoints.value, goal, "完成下一次永恒挑战进度");
             } else {
               // In a fully completed EC, there's nothing useful we can show so we just pin it at 100% and say so
-              setProgress(Currency.infinityPoints.value, 10, "This Challenge is already fully completed!");
+              setProgress(Currency.infinityPoints.value, 10, "这个挑战已全部完成");
             }
           } else {
-            setProgress(Currency.infinityPoints.value, Player.eternityGoal, "Percentage to Eternity Challenge goal");
+            setProgress(Currency.infinityPoints.value, Player.eternityGoal, "永恒挑战进度");
           }
         } else if (player.dilation.active) {
           if (player.dilation.lastEP.gt(0)) {
-            setProgress(Currency.antimatter.value, getTachyonReq(), "Percentage to gain more TP in Dilation");
+            setProgress(Currency.antimatter.value, getTachyonReq(), "获得超光速粒子进度");
           } else {
-            setProgress(Currency.infinityPoints.value, Player.eternityGoal, "Percentage to Eternity in Dilation");
+            setProgress(Currency.infinityPoints.value, Player.eternityGoal, "时间膨胀中达成永恒的进度");
           }
         } else {
           // Lai'tela destabilization; since the progress bar is logarithmically-scaled, we need to pow10 the arguments
-          setProgress(Decimal.pow10(player.celestials.laitela.entropy), 10, "Percentage to Destabilized Reality");
+          setProgress(Decimal.pow10(player.celestials.laitela.entropy), 10, "现实不稳定进度");
         }
       } else if (Pelle.isDoomed) {
         if (PelleRifts.recursion.milestones[2].canBeApplied || GalaxyGenerator.spentGalaxies > 0) {
-          setProgress(Currency.infinityPoints.value, Tesseracts.nextCost, "Percentage to next Tesseract");
+          setProgress(Currency.infinityPoints.value, Tesseracts.nextCost, "下一个超立方体进度");
         } else if (PelleStrikes.dilation.hasStrike) {
-          setProgress(Currency.eternityPoints.value, DC.E4000, "Percentage to Galaxy Generator");
+          setProgress(Currency.eternityPoints.value, DC.E4000, "星系生成器解锁进度");
         } else if (PelleStrikes.ECs.hasStrike) {
           setLinearProgress(
             (Math.min(Currency.timeTheorems.max.toNumber() / 12900, 1) +
             Math.min(EternityChallenges.completions / 60, 1)) / 2,
-            1, "Percentage to fifth Strike");
+            1, "第五次佩勒冲击进度");
         } else if (PelleStrikes.eternity.hasStrike) {
-          setLinearProgress(Currency.timeTheorems.max.toNumber(), 115, "Percentage to fourth Strike");
+          setLinearProgress(Currency.timeTheorems.max.toNumber(), 115, "第四次佩勒冲击进度");
         } else if (PelleStrikes.powerGalaxies.hasStrike) {
-          setProgress(Currency.infinityPoints.value, Player.eternityGoal, "Percentage to third Strike");
+          setProgress(Currency.infinityPoints.value, Player.eternityGoal, "第三次佩勒冲击进度");
         } else if (PelleStrikes.infinity.hasStrike) {
           if (player.break) {
-            setProgress(Currency.infinityPoints.value, 5e11, "Percentage to second Strike");
+            setProgress(Currency.infinityPoints.value, 5e11, "第二次佩勒冲击进度");
           } else {
-            setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "Percentage to Infinity");
+            setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "无限进度");
           }
         } else {
-          setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "Percentage to first Strike");
+          setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "第一次佩勒冲击进度");
         }
       } else if (Enslaved.isCompleted) {
         // Show all other goals from the top down, starting at features in the highest prestige layer
-        setProgress(Currency.infinityPoints.value, Tesseracts.nextCost, "Percentage to next Tesseract");
+        setProgress(Currency.infinityPoints.value, Tesseracts.nextCost, "下一个超立方体进度");
       } else if (PlayerProgress.dilationUnlocked()) {
-        setProgress(Currency.eternityPoints.value, DC.E4000, "Percentage to Reality");
+        setProgress(Currency.eternityPoints.value, DC.E4000, "现实进度");
       } else if (InfinityDimension(8).isUnlocked) {
-        setProgress(Currency.infinityPoints.value, Player.eternityGoal, "Percentage to Eternity");
+        setProgress(Currency.infinityPoints.value, Player.eternityGoal, "永恒进度");
       } else if (player.break) {
-        const text = `Percentage to unlock a new ${InfinityDimensions.next().hasIPUnlock
-          ? "type of Dimension"
-          : "Infinity Dimension"}`;
+        const text = `解锁${InfinityDimensions.next().hasIPUnlock
+          ? "下一"
+          : ""}无限维度进度`;
         const nextID = InfinityDimensions.next();
         if (nextID.ipRequirementReached) {
           setProgress(player.records.thisEternity.maxAM, nextID.amRequirement, text);
@@ -102,7 +102,7 @@ export default {
           setProgress(player.infinityPoints, nextID.ipRequirement, text);
         }
       } else {
-        setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "Percentage to Infinity");
+        setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "无限进度");
       }
     }
   },

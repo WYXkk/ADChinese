@@ -1,4 +1,10 @@
+# 反物质维度 手动翻译版
+
 基于 [aquamarine309](https://github.com/aquamarine309) 的 [AntimatterDimensionsJSModules](https://github.com/aquamarine309/AntimatterDimensionsJSModules)。
+
+大部分翻译来自于安卓版的翻译。
+
+## 本地运行
 
 要在本地运行，首先需要安装 [node.js](https://nodejs.org/zh-cn)。
 

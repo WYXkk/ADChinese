@@ -147,14 +147,16 @@ const pluralDatabase = new Map([
  */
 window.pluralize = function pluralize(word, amount, plural) {
   if (word === undefined || amount === undefined) throw "Arguments must be defined";
+  // 中文没有复数变形的概念
+  return word;
 
-  if (isSingular(amount)) return word;
-  const existingPlural = plural ?? pluralDatabase.get(word);
-  if (existingPlural !== undefined) return existingPlural;
+  // if (isSingular(amount)) return word;
+  // const existingPlural = plural ?? pluralDatabase.get(word);
+  // if (existingPlural !== undefined) return existingPlural;
 
-  const newWord = generatePlural(word);
-  pluralDatabase.set(word, newWord);
-  return newWord;
+  // const newWord = generatePlural(word);
+  // pluralDatabase.set(word, newWord);
+  // return newWord;
 };
 
 /**
@@ -210,8 +212,8 @@ window.quantifyInt = function quantifyInt(name, value) {
 window.makeEnumeration = function makeEnumeration(items) {
   if (items.length === 0) return "";
   if (items.length === 1) return items[0];
-  if (items.length === 2) return `${items[0]} and ${items[1]}`;
-  const commaSeparated = items.slice(0, items.length - 1).join(", ");
+  if (items.length === 2) return `${items[0]}和${items[1]}`;
+  const commaSeparated = items.slice(0, items.length - 1).join("，");
   const last = items[items.length - 1];
-  return `${commaSeparated}, and ${last}`;
+  return `${commaSeparated}，和${last}`;
 };

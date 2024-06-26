@@ -26,22 +26,22 @@ export default {
       };
     },
     multiplierDisplay() {
-      if (InfinityChallenge(3).isRunning) return `Multiply all Antimatter Dimensions by
-        ${formatX(1.05 + this.galaxyCount * 0.005, 3, 3)}`;
+      if (InfinityChallenge(3).isRunning) return `所有反物质维度获得乘
+        ${formatX(1.05 + this.galaxyCount * 0.005, 3, 3)} 加成`;
       const tickmult = this.mult;
-      return `${formatX(tickmult.reciprocal(), 2, 3)} faster / upgrade.`;
+      return `每个升级增加 ${formatX(tickmult.reciprocal(), 2, 3)}`;
     },
     tickspeedDisplay() {
-      return `Tickspeed: ${format(this.tickspeed, 2, 3)} / sec`;
+      return `计数频率：${format(this.tickspeed, 2, 3)} / 秒`;
     },
     continuumString() {
       return formatFloat(this.continuumValue, 2);
     },
     upgradeCount() {
       const purchased = this.purchasedTickspeed;
-      if (!this.freeTickspeed) return quantifyInt("Purchased Upgrade", purchased);
-      if (purchased === 0 || this.isContinuumActive) return `${formatInt(this.freeTickspeed)} Free Upgrades`;
-      return `${formatInt(purchased)} Purchased + ${formatInt(this.freeTickspeed)} Free`;
+      if (!this.freeTickspeed) return quantifyInt("已购买升级", purchased);
+      if (purchased === 0 || this.isContinuumActive) return `${formatInt(this.freeTickspeed)} 免费升级`;
+      return `${formatInt(purchased)} 已购买 + ${formatInt(this.freeTickspeed)} 免费`;
     }
   },
   methods: {
@@ -88,13 +88,13 @@ export default {
         data-v-tickspeed-row
       >
         <span v-if="isContinuumActive">
-          Tickspeed Continuum: {{ continuumString }}
+          计数频率连续统：{{ continuumString }}
         </span>
         <span v-else-if="isEC9">
-          Tickspeed Unpurchasable (EC 9)
+          计数频率无法购买（永恒挑战9）
         </span>
         <span v-else>
-          Tickspeed Cost: {{ format(cost) }}
+          计数频率价格：{{ format(cost) }}
         </span>
         <div
           v-if="hasTutorial"
@@ -108,7 +108,7 @@ export default {
         onclick="buyMaxTickSpeed()"
         data-v-tickspeed-row
       >
-        Buy Max
+        购买最大
       </button>
     </div>
     <div

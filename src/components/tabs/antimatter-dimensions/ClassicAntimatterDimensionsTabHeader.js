@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     sacrificeTooltip() {
-      return `Boosts 8th Antimatter Dimension by ${formatX(this.sacrificeBoost, 2, 2)}`;
+      return `给第八维度提供 ${formatX(this.sacrificeBoost, 2, 2)} 加成`;
     },
   },
   methods: {
@@ -46,17 +46,17 @@ export default {
       @click="sacrifice"
     >
       <span v-if="isSacrificeAffordable">
-        Dimensional Sacrifice ({{ formatX(sacrificeBoost, 2, 2) }})
+       维度献祭 ({{ formatX(sacrificeBoost, 2, 2) }})
       </span>
       <span v-else>
-        Dimensional Sacrifice Disabled ({{ disabledCondition }})
+        维度献祭已禁用 ({{ disabledCondition }})
       </span>
     </PrimaryButton>
     <PrimaryButton
       class="o-primary-btn--buy-max"
       @click="maxAll"
     >
-      Max all (M)
+      购买最大 (M)
     </PrimaryButton>
   </div>
   `
