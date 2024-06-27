@@ -42,12 +42,12 @@ export default {
           activityToken: () => player.dilation.active
         },
         {
-          name: token => `永恒挑战 ${token}`,
+          name: token => `永恒挑战${token}`,
           isActive: token => token > 0,
           activityToken: () => player.challenge.eternity.current
         },
         {
-          name: token => `无限挑战 ${token}`,
+          name: token => `无限挑战${token}`,
           isActive: token => token > 0,
           activityToken: () => player.challenge.infinity.current
         },

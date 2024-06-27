@@ -1,17 +1,17 @@
 import { DC } from "../../constants.js";
 
 const specialInfinityGlyphDisabledEffectText = () => (PelleRifts.chaos.milestones[1].canBeApplied
-  ? "The Pelle-Specific effect from Infinity Glyphs is also disabled."
+  ? "无限符文在佩勒的现实中特有的词条也被禁用了。"
   : "");
 
 export const eternityChallenges = [
   {
     id: 1,
-    description: "Time Dimensions are disabled.",
+    description: "时间维度已禁用。",
     goal: DC.E1800,
     goalIncrease: DC.E200,
     reward: {
-      description: "Time Dimension multiplier based on time spent this Eternity",
+      description: "基于你在本次永恒中消耗的时间获得时间维度的倍率",
       effect: completions =>
         Decimal.pow(Math.max(player.records.thisEternity.time / 10, 0.9), 0.3 + (completions * 0.05)),
       formatEffect: value => formatX(value, 2, 1)
@@ -21,12 +21,12 @@ export const eternityChallenges = [
   },
   {
     id: 2,
-    description: "Infinity Dimensions are disabled.",
+    description: "无限维度已禁用。",
     goal: DC.E975,
     pelleGoal: DC.E1750,
     goalIncrease: DC.E175,
     reward: {
-      description: "1st Infinity Dimension multiplier based on Infinity Power",
+      description: "基于无限之力获得第一无限维度的倍率",
       effect: completions => Currency.infinityPower.value.pow(1.5 / (700 - completions * 100)).clampMin(1),
       cap: DC.E100,
       formatEffect: value => formatX(value, 2, 1)
@@ -34,30 +34,29 @@ export const eternityChallenges = [
   },
   {
     id: 3,
-    description: "Antimatter Dimensions 5-8 don't produce anything. Dimensional Sacrifice is disabled.",
+    description: "第五维度至第八维度什么都不会生产。禁用维度献祭。",
     goal: DC.E600,
     pelleGoal: DC.E925,
     goalIncrease: DC.E75,
     reward: {
-      description: () => `Increase the multiplier for buying ${formatInt(10)} Antimatter Dimensions`,
+      description: () => `增加购买 ${formatInt(10)} 个反物质维度的倍率`,
       effect: completions => completions * 0.72,
       formatEffect: value => `+${format(value, 2, 2)}`
     }
   },
   {
     id: 4,
-    description: `all Infinity multipliers and generators are disabled. The goal must be reached within a certain
-      number of Infinities or else you will fail the Challenge.`,
+    description: `禁用所有的无限次数倍增器和生成器。你必须在指定的无限次数内完成挑战，否则挑战将失败。`,
     goal: DC.E2750,
     goalIncrease: DC.E550,
     restriction: completions => Math.max(16 - 4 * completions, 0),
     checkRestriction: restriction => Currency.infinities.lte(restriction),
     formatRestriction: restriction => (restriction === 0
-      ? "without any Infinities"
-      : `in ${quantifyInt("Infinity", restriction)} or less`),
-    failedRestriction: "(Too many Infinities for more)",
+      ? "不进行无限"
+      : `在 ${quantifyInt("次无限", restriction)}内`),
+    failedRestriction: "(无限次数超过下一次的上限)",
     reward: {
-      description: "Infinity Dimension multiplier based on unspent IP",
+      description: "基于未使用的无限点数获得无限维度的倍率",
       effect: completions => Currency.infinityPoints.value.pow(0.003 + completions * 0.002),
       cap: DC.E200,
       formatEffect: value => formatX(value, 2, 1)
@@ -65,62 +64,60 @@ export const eternityChallenges = [
   },
   {
     id: 5,
-    description: () => `Antimatter Galaxy cost increase scaling starts immediately (normally at ${formatInt(100)}
-      Galaxies). Dimension Boost costs scaling is massively increased.`,
+    description: () => `星系价格立刻开始增加 (通常在 ${formatInt(100)} 星系时开始)。 维度提升价格增速大幅增加。`,
     goal: DC.E750,
     pelleGoal: DC.E1400,
     goalIncrease: DC.E400,
     reward: {
-      description: "Distant Galaxy cost scaling starts later",
+      description: "推迟遥远星系的价格增长",
       effect: completions => completions * 5,
-      formatEffect: value => `${formatInt(value)} AG later`
+      formatEffect: value => `${formatInt(value)} 星系后开始`
     }
   },
   {
     id: 6,
     // The asterisk, if present, will get replaced with strings generated from the scramble text
     description: () => {
-      if (Enslaved.isRunning) return "you *. The cost of upgrading your max Replicanti Galaxies is massively reduced.";
-      return "you cannot gain Antimatter Galaxies normally. The cost of upgrading your max Replicanti" +
-              " Galaxies is massively reduced.";
+      if (Enslaved.isRunning) return "你*，但是最大复制器星系升级的价格会大大降低。";
+      return "你无法正常地获得反物质星系，但是最大复制器星系升级的价格会大大降低。";
     },
     goal: DC.E850,
     pelleGoal: DC.E1500,
     goalIncrease: DC.E250,
     reward: {
-      description: "Further reduce Antimatter Dimension cost multiplier growth",
+      description: "进一步降低反物质维度的价格增速",
       effect: completions => completions * 0.2,
       formatEffect: value => {
         const total = Math.round(Player.dimensionMultDecrease + Effects.sum(EternityChallenge(6).reward)) - value;
-        return `-${format(value, 2, 1)} (${formatX(total, 2, 1)} total)`;
+        return `-${format(value, 2, 1)} (总计 ${formatX(total, 2, 1)})`;
       }
     },
-    scrambleText: ["cannot gain Antimatter Galaxies normally", "c㏰'퐚 gai鸭 Anti꟢at랜erﻪﶓa⁍axie㮾 䂇orma㦂l"],
+    scrambleText: ["无法正常地获得反物质星系", "㏰法퐚랜地ヰ㮾ゑ䂇质㦂彁"],
   },
   {
     id: 7,
     description:
-      "1st Time Dimensions produce 8th Infinity Dimensions and 1st Infinity Dimensions produce " +
-      "7th Antimatter Dimensions. Tickspeed also directly applies to Infinity and Time Dimensions.",
+      "第一时间维度生产第八无限维度，不生产时间碎片。第一无限维度生产第七维度，不生产无限之力。 " +
+      "同时，计数频率也直接影响无限维度和时间维度。",
     goal: DC.E2000,
     pelleGoal: DC.E2700,
     goalIncrease: DC.E530,
     effect: () => TimeDimension(1).productionPerSecond,
     reward: {
-      description: "1st Time Dimension produces 8th Infinity Dimensions",
+      description: "第一时间维度也生产第八无限维度",
       effect: completions => TimeDimension(1).productionPerSecond.pow(completions * 0.2).minus(1).clampMin(0),
-      formatEffect: value => `${format(value, 2, 1)} per second`
+      formatEffect: value => `${format(value, 2, 1)} 每秒`
     }
   },
   {
     id: 8,
-    description: () => `you can only upgrade Infinity Dimensions ${formatInt(50)} times and Replicanti
-      upgrades ${formatInt(40)} times. Infinity Dimension and Replicanti upgrade autobuyers are disabled.`,
+    description: () => `你只能购买无限维度 ${formatInt(50)} 次，购买复制器升级 ${formatInt(40)} 次。
+    禁用自动购买无限维度和复制器升级。`,
     goal: DC.E1300,
     pelleGoal: DC.E2800,
     goalIncrease: DC.E900,
     reward: {
-      description: "Infinity Power strengthens Replicanti Galaxies",
+      description: "基于无限之力提升复制器星系的效果",
       effect: completions => {
         const infinityPower = Math.log10(Currency.infinityPower.value.pLog10() + 1);
         return Math.max(0, Math.pow(infinityPower, 0.03 * completions) - 1);
@@ -130,13 +127,13 @@ export const eternityChallenges = [
   },
   {
     id: 9,
-    description: () => `you cannot buy Tickspeed upgrades. Infinity Power instead multiplies
-      Time Dimensions with greatly reduced effect. ${specialInfinityGlyphDisabledEffectText()}`,
+    description: () => `你不能购买计数频率升级。无限之力以极低的效果加成时间维度。
+    ${specialInfinityGlyphDisabledEffectText()}`,
     goal: DC.E1750,
     pelleGoal: DC.E2900,
     goalIncrease: DC.E250,
     reward: {
-      description: "Infinity Dimension multiplier based on Time Shards",
+      description: "基于时间碎片获得无限维度倍率",
       effect: completions => Currency.timeShards.value.pow(completions * 0.1).clampMin(1),
       cap: DC.E400,
       formatEffect: value => formatX(value, 2, 1)
@@ -145,9 +142,9 @@ export const eternityChallenges = [
   {
     id: 10,
     description: () => {
-      let description = `Time Dimensions and Infinity Dimensions are disabled. You gain an immense boost from
-        Infinities to Antimatter Dimensions (Infinities${formatPow(950)}). ${specialInfinityGlyphDisabledEffectText()}`;
-      EternityChallenge(10).applyEffect(v => description += ` Currently: ${formatX(v, 2, 1)}`);
+      let description = `禁用时间维度和无限维度。你的反物质维度获得基于无限次数的巨大倍率。(无限次数${formatPow(950)})
+      ${specialInfinityGlyphDisabledEffectText()}`;
+      EternityChallenge(10).applyEffect(v => description += ` 当前：${formatX(v, 2, 1)}`);
       return description;
     },
     goal: DC.E3000,
@@ -155,7 +152,7 @@ export const eternityChallenges = [
     goalIncrease: DC.E300,
     effect: () => Decimal.pow(Currency.infinitiesTotal.value, 950).clampMin(1).pow(TimeStudy(31).effectOrDefault(1)),
     reward: {
-      description: "Time Dimension multiplier based on Infinities",
+      description: "获得基于无限次数的时间维度的倍率",
       effect: completions => {
         const mult = Currency.infinitiesTotal.value.times(2.783e-6).pow(0.4 + 0.1 * completions).clampMin(1);
         return mult.powEffectOf(TimeStudy(31));
@@ -164,44 +161,44 @@ export const eternityChallenges = [
         // Since TS31 is already accounted for in the effect prop, we need to "undo" it to display the base value here
         const mult = formatX(value, 2, 1);
         return TimeStudy(31).canBeApplied
-          ? `${formatX(value.pow(1 / TimeStudy(31).effectValue), 2, 1)} (After TS31: ${mult})`
+          ? `${formatX(value.pow(1 / TimeStudy(31).effectValue), 2, 1)} (时间研究31: ${mult})`
           : mult;
       }
     }
   },
   {
     id: 11,
-    description: () => `all Dimension multipliers and powers are disabled except for the multipliers from
-      Infinity Power and Dimension Boosts (to Antimatter Dimensions). ${specialInfinityGlyphDisabledEffectText()}`,
+    description: () => `除了从无限之力和维度提升 (给予反物质维度) 获得的倍率外，禁用其他所有维度倍率。
+    ${specialInfinityGlyphDisabledEffectText()}`,
     goal: DC.E450,
     pelleGoal: DC.E11200,
     goalIncrease: DC.E200,
     pelleGoalIncrease: DC.E1400,
     reward: {
-      description: "Further reduce Tickspeed cost multiplier growth",
+      description: "进一步降低计数频率的价格增速",
       effect: completions => completions * 0.07,
       formatEffect: value => {
         const total = Math.round(Player.tickSpeedMultDecrease + Effects.sum(EternityChallenge(11).reward)) - value;
-        return `-${format(value, 2, 2)} (${formatX(total, 2, 2)} total)`;
+        return `-${format(value, 2, 2)} (总计 ${formatX(total, 2, 2)})`;
       }
     }
   },
   {
     id: 12,
     description: () => (PlayerProgress.realityUnlocked()
-      ? `the game runs ×${formatInt(1000)} slower; all other game speed effects are disabled. The goal must be reached
-        within a certain amount of time or you will fail the Challenge. ${specialInfinityGlyphDisabledEffectText()}`
-      : `the game runs ×${formatInt(1000)} slower. The goal must be reached
-        within a certain amount of time or you will fail the Challenge.`),
+      ? `游戏速度放慢 ${formatInt(1000)} 倍。禁用所有其它游戏速度效果。
+        你必须在指定的时间内完成挑战，否则挑战将失败。${specialInfinityGlyphDisabledEffectText()}`
+      : `游戏速度放慢 ${formatInt(1000)} 倍。
+        你必须在指定的时间内完成挑战，否则挑战将失败。`),
     goal: DC.E110000,
     pelleGoal: DC.E208000,
     goalIncrease: DC.E12000,
     restriction: completions => Math.max(10 - 2 * completions, 1) / 10,
     checkRestriction: restriction => Time.thisEternity.totalSeconds < restriction,
-    formatRestriction: restriction => `in ${quantify("in-game second", restriction, 0, 1)} or less.`,
-    failedRestriction: "(Too slow for more)",
+    formatRestriction: restriction => `在游戏时间 ${quantify("秒", restriction, 0, 1)}内`,
+    failedRestriction: "(时间超过下一次的上限)",
     reward: {
-      description: "Infinity Dimension cost multipliers are reduced",
+      description: "降低无限维度的价格增幅",
       effect: completions => 1 - completions * 0.008,
       formatEffect: value => `x${formatPow(value, 3, 3)}`
     }

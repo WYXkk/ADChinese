@@ -33,13 +33,13 @@ export default {
     },
     nextECText() {
       return this.untilNextEC.totalMilliseconds === 0 && !this.autoEC
-        ? "Immediately upon unpausing"
-        : `${this.untilNextEC} (real time)`;
+        ? "取消暂停后立即"
+        : `${this.untilNextEC} (现实时间)`;
     },
     allECText() {
       return this.untilAllEC.totalMilliseconds === 0 && !this.autoEC
-        ? "Immediately upon unpausing"
-        : `After ${this.untilAllEC} (real time)`;
+        ? "取消暂停后立即"
+        : `${this.untilAllEC}后 (现实时间)`;
     }
   },
   methods: {
@@ -73,8 +73,7 @@ export default {
   <div class="l-challenges-tab">
     <ChallengeTabHeader />
     <div v-if="isAutoECVisible">
-      Eternity Challenges are automatically completed sequentially, requiring all previous
-      Eternity Challenges to be fully completed before any progress is made.
+      永恒挑战会按顺序自动完成，且会在上一个完全完成后才开始下一个。
     </div>
     <div
       v-if="isAutoECVisible && remainingECTiers > 0"
@@ -86,30 +85,30 @@ export default {
           class="l-emphasis"
           data-v-eternity-challenges-tab
         >
-          Auto EC is currently disabled because of the "{{ upgradeLockNameText }}" upgrade requirement lock.
+          自动永恒挑战被升级 "{{ upgradeLockNameText }}" 的条件锁禁用了。
         </span>
         <span v-if="remainingECTiers > 0">
-          Next Auto Eternity Challenge completion: {{ nextECText }}
+          自动完成下一次永恒挑战：{{ nextECText }}
         </span>
         <span>
-          All Auto Eternity Challenge completions: {{ allECText }}
+          自动完成所有永恒挑战：{{ allECText }}
         </span>
         <br>
       </div>
     </div>
     <div>
-      Complete Eternity Challenges again for a bigger reward, maximum of {{ formatInt(5) }} times.<br>
-      The rewards are applied permanently with no need to have the respective Eternity Challenge Time Study purchased.
+      再次完成永恒挑战以获得更大的奖励，最多不超过 {{ formatInt(5) }} 次。<br>
+      奖励永久有效，无需购买对应的时间研究。
     </div>
     <div v-if="!hasECR">
-      When you respec out of an unlocked Eternity Challenge, you don't need to redo the secondary requirement<br>
-      in order to unlock it again until you complete it; only the Time Theorems are required.
+      即使你在解锁永恒挑战之后重置时间研究树，也无需重新完成解锁永恒挑战的第二个要求，<br>
+      只需要花费时间之理即可再次解锁，直到你完成一次此挑战。
     </div>
     <div v-if="unlockedCount !== 12">
-      You have seen {{ formatInt(unlockedCount) }} out of {{ formatInt(12) }} Eternity Challenges.
+      你已经在总共 {{ formatInt(12) }} 个永恒挑战中看到过 {{ formatInt(unlockedCount) }} 个。
     </div>
     <div v-else>
-      You have seen all {{ formatInt(12) }} Eternity Challenges.
+      你已经看到过所有 {{ formatInt(12) }} 个永恒挑战。
     </div>
     <ChallengeGrid
       v-slot="{ challenge }"

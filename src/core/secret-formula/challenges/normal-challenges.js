@@ -62,7 +62,7 @@ export const normalChallenges = [
     id: 6,
     legacyId: 10,
     isQuickResettable: false,
-    description: () => `购买反物质维度时不消耗反物质，而是按另外的价格消耗其上 ${formatInt(2)} 层的反物质维度。`
+    description: () => `购买反物质维度时不消耗反物质，而是按另外的价格消耗其上 ${formatInt(2)} 层的反物质维度。`,
     name: "第六维度自动购买器",
     reward: "可升级的第六维度自动购买器",
     lockedAt: DC.D0,
@@ -101,7 +101,7 @@ export const normalChallenges = [
     id: 10,
     legacyId: 4,
     isQuickResettable: false,
-    description: () => `只有 ${formatInt(6)} 个反物质维度，同时修改维度提升和反物质星系的价格。`
+    description: () => `只有 ${formatInt(6)} 个反物质维度，同时修改维度提升和反物质星系的价格。`,
     name: "自动维度提升",
     reward: "维度提升自动购买器",
     lockedAt: DC.D16,
