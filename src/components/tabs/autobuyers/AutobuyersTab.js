@@ -38,7 +38,7 @@ export default {
       return PlayerProgress.seenAlteredSpeed();
     },
     gameTickLength() {
-      return `${formatInt(player.options.updateRate)} ms`;
+      return `${formatInt(player.options.updateRate)} 毫秒`;
     }
   },
   methods: {
@@ -65,20 +65,20 @@ export default {
     <AutobuyerToggles />
     <OpenModalHotkeysButton />
     <div v-if="hasSeenGamespeedAlteringEffects">
-      Autobuyer intervals and time-based settings are always <b>real time</b> and therefore
+      自动购买器的间隔和与时间相关的设置都指<b>现实时间</b>，
       <br>
-      unaffected by anything which may alter how fast the game itself is running.
+      不受任何影响游戏运行速度的事物影响。
       <br>
       <br>
     </div>
     <div v-if="!hasInfinity">
-      Challenges for upgrading autobuyers are unlocked by reaching Infinity.
+      用于解锁自动购买器升级的挑战在达到无穷后解锁。
     </div>
-    <b>Autobuyers with no displayed bulk have unlimited bulk by default.</b>
+    <b>对于没有显示最大批量购买数量的自动购买器，其没有最大批量限制。</b>
     <b>
-      Antimatter Dimension Autobuyers can have their bulk upgraded once interval is below {{ formatInt(100) }} ms.
+      对于反物质维度的自动购买器，在冷却缩短至 {{ formatInt(100) }} 毫秒以下后可以升级批量购买。
     </b>
-    <b v-if="hasInstant">Autobuyers with "Instant" interval will trigger every game tick ({{ gameTickLength }}).</b>
+    <b v-if="hasInstant">冷却显示为 "立即" 的自动购买器会在每一个游戏刻触发 ({{ gameTickLength }}).</b>
     <RealityAutobuyerBox
       class="c-reality-pos"
       data-v-autobuyers-tab

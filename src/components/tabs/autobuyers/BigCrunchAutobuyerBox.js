@@ -56,21 +56,21 @@ export default {
     modeProps(mode) {
       switch (mode) {
         case AUTO_CRUNCH_MODE.AMOUNT: return {
-          title: "Big Crunch at X IP",
+          title: "在 X 无限点数时大坍缩",
           input: {
             property: "amount",
             type: "decimal"
           },
         };
         case AUTO_CRUNCH_MODE.TIME: return {
-          title: "Seconds between Crunches",
+          title: "每 X 秒大坍缩",
           input: {
             property: "time",
             type: "float"
           },
         };
         case AUTO_CRUNCH_MODE.X_HIGHEST: return {
-          title: "X times highest IP",
+          title: "在 X 倍最高无限点数时大坍缩",
           input: {
             property: "xHighest",
             type: "decimal"
@@ -88,7 +88,7 @@ export default {
     :autobuyer="autobuyer"
     :show-interval="!postBreak"
     :is-modal="isModal"
-    name="Automatic Big Crunch"
+    name="自动大坍缩"
   >
     <template
       v-if="!hasMaxedInterval"
@@ -106,7 +106,7 @@ export default {
       >
         <template #header>
           <div class="o-primary-btn c-autobuyer-box__mode-select c-autobuyer-box__mode-select-header">
-            ▼ Current Setting: ▼
+            ▼ 当前设置： ▼
             <br>
             {{ modeName(mode) }}
           </div>
@@ -147,7 +147,7 @@ export default {
           class="o-clickable"
           data-v-big-crunch-autobuyer-box
         >
-        Dynamic amount
+        动态调整数量
       </label>
     </template>
   </AutobuyerBox>

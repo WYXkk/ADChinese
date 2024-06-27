@@ -10,7 +10,7 @@ export default {
     class="c-options-tab__hotkeys-link"
     @click="handleClick"
   >
-    Press <kbd>?</kbd> to open the hotkey list.
+    按 <kbd>?</kbd> 以打开快捷键列表。
   </p>
   `
 };
