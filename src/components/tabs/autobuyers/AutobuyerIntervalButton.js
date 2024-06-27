@@ -40,7 +40,7 @@ export default {
     :class="classObject"
     @click="upgradeInterval"
   >
-    冷却减少 {{ formatPercents(0.4) }}
+    间隔减少 {{ formatPercents(0.4) }}
     <br>
     价格：{{ format(cost, 2) }} 无限点数
   </button>
@@ -48,7 +48,7 @@ export default {
     v-else-if="!isMaxed"
     class="o-autobuyer-btn l-autobuyer-box__button o-autobuyer-btn--unavailable"
   >
-    完成对应的挑战以升级冷却
+    完成对应的挑战以升级间隔
   </button>
   `
 };

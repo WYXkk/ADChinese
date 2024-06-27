@@ -76,9 +76,9 @@ export default {
     </div>
     <b>对于没有显示最大批量购买数量的自动购买器，其没有最大批量限制。</b>
     <b>
-      对于反物质维度的自动购买器，在冷却缩短至 {{ formatInt(100) }} 毫秒以下后可以升级批量购买。
+      对于反物质维度的自动购买器，在间隔缩短至 {{ formatInt(100) }} 毫秒以下后可以升级批量购买。
     </b>
-    <b v-if="hasInstant">冷却显示为 "立即" 的自动购买器会在每一个游戏刻触发 ({{ gameTickLength }}).</b>
+    <b v-if="hasInstant">间隔显示为 "立即" 的自动购买器会在每一个游戏刻触发 ({{ gameTickLength }}).</b>
     <RealityAutobuyerBox
       class="c-reality-pos"
       data-v-autobuyers-tab

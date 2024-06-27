@@ -47,7 +47,7 @@ export default {
   },
   template: `
   <div class="c-autobuyer-box__small-text">
-    当前冷却：{{ intervalText }}
+    当前间隔：{{ intervalText }}
     <span v-if="isShowingBulk">
       <br>
       {{ bulkText }}
