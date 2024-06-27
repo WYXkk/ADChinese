@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     displayText() {
-      return `${this.label} ${this.value ? this.on : this.off}`.trim();
+      return `${this.label}${this.value ? this.on : this.off}`.trim();
     }
   },
   template: `

@@ -161,7 +161,7 @@ export const eternityChallenges = [
         // Since TS31 is already accounted for in the effect prop, we need to "undo" it to display the base value here
         const mult = formatX(value, 2, 1);
         return TimeStudy(31).canBeApplied
-          ? `${formatX(value.pow(1 / TimeStudy(31).effectValue), 2, 1)} (时间研究31: ${mult})`
+          ? `${formatX(value.pow(1 / TimeStudy(31).effectValue), 2, 1)} (在时间研究31后：${mult})`
           : mult;
       }
     }

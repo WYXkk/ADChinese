@@ -25,7 +25,7 @@ export default {
   },
   template: `
   <span v-if="isUnlocked">
-    🌀{{ id }}:<span v-html="state" />
+    🌀{{ id }}：<span v-html="state" />
   </span>
   `
 };

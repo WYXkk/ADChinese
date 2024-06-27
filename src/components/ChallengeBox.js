@@ -64,7 +64,7 @@ export default {
       const lockedText = this.lockedAt === undefined
         ? ""
         : ` (${formatInt(this.infinities)}/${formatInt(this.lockedAt)})`;
-      return `已锁定{lockedText}`;
+      return `已锁定${lockedText}`;
     }
   },
   methods: {

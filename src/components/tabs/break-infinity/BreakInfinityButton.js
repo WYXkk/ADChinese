@@ -19,12 +19,12 @@ export default {
       };
     },
     tooltip() {
-      if (this.isEnslaved) return "...eons stacked on eons stacked on eons stacked on eons stacked on ...";
+      if (this.isEnslaved) return "……无数个世纪又无数个世纪又无数个世纪……";
       return undefined;
     },
     text() {
-      if (this.isEnslaved) return "FEEL ETERNITY";
-      return this.isBroken ? "INFINITY IS BROKEN" : "BREAK INFINITY";
+      if (this.isEnslaved) return "感受永恒";
+      return this.isBroken ? "无限已打破" : "打破无限";
     }
   },
   methods: {

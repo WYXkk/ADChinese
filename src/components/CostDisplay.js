@@ -19,7 +19,7 @@ export default {
     },
     label: {
       type: String,
-      default: "Cost:",
+      default: "价格：",
       required: false
     }
   },
@@ -84,7 +84,7 @@ export default {
   template: `
   <span v-if="isVisible">
     <br v-if="br">
-    {{ label }} {{ quantify(name, cost, 0, 0, formatCost) }}
+    {{ label }}{{ quantify(name, cost, 0, 0, formatCost) }}
   </span>
   `
 };
