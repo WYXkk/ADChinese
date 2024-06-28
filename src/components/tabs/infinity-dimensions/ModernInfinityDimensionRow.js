@@ -42,27 +42,27 @@ export default {
       return ui.view.shiftDown;
     },
     name() {
-      return `${InfinityDimension(this.tier).shortDisplayName} Infinity Dimension`;
+      return `${InfinityDimension(this.tier).shortDisplayName}无限维度`;
     },
     costDisplay() {
       if (this.isUnlocked || this.shiftDown) {
-        if (this.isCapped) return "Capped";
-        return this.showCostTitle ? `Cost: ${format(this.cost)} IP` : `${format(this.cost)} IP`;
+        if (this.isCapped) return "已达上限";
+        return this.showCostTitle ? `价格：${format(this.cost)} 无限点数` : `${format(this.cost)} 无限点数`;
       }
 
       if (this.canUnlock) {
-        return "Unlock";
+        return "解锁";
       }
 
-      return `Reach ${formatPostBreak(InfinityDimension(this.tier).amRequirement)} AM`;
+      return `达到 ${formatPostBreak(InfinityDimension(this.tier).amRequirement)} 反物质`;
     },
     hasLongText() {
       return this.costDisplay.length > 15;
     },
     capTooltip() {
-      if (this.enslavedRunning) return `Nameless prevents the purchase of more than ${format(10)} Infinity Dimensions`;
-      if (this.isCapped) return `Cap reached at ${format(this.capIP)} IP`;
-      return `Purchased ${quantifyInt("time", this.purchases)}`;
+      if (this.enslavedRunning) return `无名氏禁止购买超过 ${format(10)} 个无限维度`;
+      if (this.isCapped) return `上限在 ${format(this.capIP)} 无限点数达到`;
+      return `已购买 ${quantifyInt("次", this.purchases)}`;
     },
     showRow() {
       return this.eternityReached || this.isUnlocked || this.canUnlock || this.amount.gt(0) ||
@@ -144,7 +144,7 @@ export default {
         v-if="isAutobuyerUnlocked && !isEC8Running"
         v-model="isAutobuyerOn"
         class="o-primary-btn--id-auto"
-        label="Auto:"
+        label="自动："
       />
       <PrimaryButton
         v-else
@@ -152,7 +152,7 @@ export default {
         class="o-primary-btn--id-auto"
         @click="buyMaxInfinityDimension"
       >
-        Buy Max
+        购买最大
       </PrimaryButton>
     </div>
   </div>

@@ -239,7 +239,7 @@ export default {
       </div>
       <br>
       <div v-if="isInEC8">
-        由于永恒挑战8，你还能买 {{ quantifyInt("次", ec8Purchases) }}升级。
+        由于永恒挑战8，你只能再买 {{ quantifyInt("次", ec8Purchases) }}升级。
       </div>
       <div class="l-replicanti-upgrade-row">
         <ReplicantiUpgradeButton :setup="replicantiChanceSetup" />
