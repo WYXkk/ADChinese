@@ -30,20 +30,20 @@ export default {
     },
     requirement() {
       if (this.id === 1) {
-        return `Requirement: ${formatInt(5)} EC11 and EC12 completions
-          and ${formatInt(this.maxTT)}/${formatInt(TimeStudy.dilation.totalTimeTheoremRequirement)}
-          total Time Theorems`;
+        return `需求：永恒挑战11和12各完成 ${formatInt(5)} 次，`+
+          `总计拥有 ${formatInt(this.maxTT)}/${formatInt(TimeStudy.dilation.totalTimeTheoremRequirement)}
+          时间之理`;
       }
       if (this.id === 6) {
-        const achRows = Perk.firstPerk.isBought ? "" : ` and ${formatInt(13)} rows of Achievements`;
-        return `Requirement: ${format("1e4000")} Eternity Points${achRows}`;
+        const achRows = Perk.firstPerk.isBought ? "" : `和 ${formatInt(13)} 行成就`;
+        return `需求：${format("1e4000")} 永恒点数${achRows}`;
       }
       return "";
     },
     theoremTimeEstimate() {
       if (this.study.isBought || !this.study.cost || this.ttGen.eq(0)) return null;
       const time = Decimal.sub(this.study.cost, this.currTT).dividedBy(this.ttGen);
-      return time.gt(0) ? `Enough TT in ${TimeSpan.fromSeconds(time.toNumber()).toStringShort()}` : null;
+      return time.gt(0) ? `${TimeSpan.fromSeconds(time.toNumber()).toStringShort()}后有足够的时间之理` : null;
     }
   },
   methods: {

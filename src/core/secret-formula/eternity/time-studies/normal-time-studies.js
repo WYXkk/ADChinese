@@ -38,7 +38,7 @@ export const normalTimeStudies = [
     // All requirements of an empty array will always evaluate to true, so this study is always purchasable
     requirement: [],
     reqType: TS_REQUIREMENT_TYPE.ALL,
-    description: "Tickspeed affects 1st Time Dimension with reduced effect",
+    description: "第一时间维度获得基于计数频率的加成",
     effect: () => {
       const tickspeed = Tickspeed.current.dividedBy(1000);
       const firstPart = tickspeed.pow(0.005).times(0.95);
@@ -53,7 +53,7 @@ export const normalTimeStudies = [
     cost: 3,
     requirement: [11],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `Improve Replicanti multiplier formula to
+    description: () => `复制器加成无限维度的倍数计算公式变得更好：
       (log2(x)${formatPow(2)})+x${formatPow(0.032, 3, 3)}`,
     effect: () => Replicanti.amount.pow(0.032),
     // This is a special case because the study itself is *added* to the existing formula, but it makes more sense
@@ -70,7 +70,7 @@ export const normalTimeStudies = [
     cost: 2,
     requirement: [11],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `Base Replicanti interval limit ${formatInt(50)}ms ➜ ${formatInt(1)}ms`,
+    description: () => `复制间隔基础值最小值 ${formatInt(50)} 毫秒 ➜ ${formatInt(1)} 毫秒`,
     effect: 1
   },
   {
@@ -78,7 +78,7 @@ export const normalTimeStudies = [
     cost: 3,
     requirement: [21],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `Powers up multipliers that are based on your Infinities (Bonuses${formatPow(4)})`,
+    description: () => `加强基于无限次数的奖励 (奖励${formatPow(4)})`,
     effect: 4
   },
   {
@@ -86,7 +86,7 @@ export const normalTimeStudies = [
     cost: 2,
     requirement: [22],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: `You gain more Infinities based on Dimension Boosts`,
+    description: `基于维度提升获得更多的无限次数`,
     effect: () => Math.max(DimBoost.totalBoosts, 1),
     formatEffect: value => formatX(value, 2)
   },
@@ -95,14 +95,14 @@ export const normalTimeStudies = [
     cost: 2,
     requirement: [22],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "You keep half of your Replicanti Galaxies on Infinity"
+    description: "在无限时保留一半的复制器星系"
   },
   {
     id: 41,
     cost: 4,
     requirement: [31],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `All Galaxies give a ${formatX(DC.D1_2, 1, 1)} multiplier to Infinity Points gained`,
+    description: () => `每个星系给予 ${formatX(DC.D1_2, 1, 1)} 倍的无限点倍数加成`,
     effect: () => DC.D1_2.pow(Replicanti.galaxies.total + player.galaxies + player.dilation.totalTachyonGalaxies),
     formatEffect: value => formatX(value, 2, 1)
   },
@@ -111,8 +111,8 @@ export const normalTimeStudies = [
     cost: 6,
     requirement: [32],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `Antimatter Galaxy requirement increases by ${formatInt(52)}
-      8th Dimensions instead of ${formatInt(60)}`,
+    description: () => `反物质星系需求每次增长 ${formatInt(52)}
+      个第八维度而不是 ${formatInt(60)} 个`,
     effect: 52
   },
   {
@@ -120,7 +120,7 @@ export const normalTimeStudies = [
     cost: 3,
     requirement: [41, 42],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `You gain ${formatX(1e15)} more Infinity Points`,
+    description: () => `获得 ${formatX(1e15)} 倍无限点数`,
     effect: 1e15
   },
   {
@@ -128,7 +128,7 @@ export const normalTimeStudies = [
     cost: 3,
     requirement: [51],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `You gain ${formatX(15)} more Eternity Points`,
+    description: () => `获得 ${formatX(15)} 倍永恒点数`,
     effect: 15
   },
   {
@@ -136,7 +136,7 @@ export const normalTimeStudies = [
     cost: 3,
     requirement: [42, () => Perk.bypassEC5Lock.isBought || EternityChallenge(5).completions > 0],
     reqType: TS_REQUIREMENT_TYPE.ALL,
-    description: () => `You gain Replicanti ${formatInt(3)} times faster`,
+    description: () => `获得复制器的速度提高到 ${formatInt(3)} 倍`,
     effect: 3
   },
   {
@@ -144,7 +144,7 @@ export const normalTimeStudies = [
     cost: 4,
     requirement: [61, () => Perk.studyECRequirement.isBought || !EternityChallenge(12).isUnlocked],
     reqType: TS_REQUIREMENT_TYPE.DIMENSION_PATH,
-    description: "Dimensional Sacrifice affects all other Antimatter Dimensions with reduced effect",
+    description: "维度献祭以较低的效果加成其他所有反物质维度",
     effect: () => Sacrifice.totalBoost.pow(0.25).clampMin(1),
     cap: DC.E210000,
     formatEffect: value => formatX(value, 2, 1)
@@ -156,7 +156,7 @@ export const normalTimeStudies = [
       () => Perk.studyECRequirement.isBought ||
         (!EternityChallenge(11).isUnlocked && !EternityChallenge(12).isUnlocked)],
     reqType: TS_REQUIREMENT_TYPE.DIMENSION_PATH,
-    description: "Dimensional Sacrifice affects 4th Infinity Dimension with greatly reduced effect",
+    description: "维度献祭以极低的效果加成第四无限维度",
     effect: () => Sacrifice.totalBoost.pow(0.04).clampMin(1),
     cap: DC.E30000,
     formatEffect: value => formatX(value, 2, 1)
@@ -166,7 +166,7 @@ export const normalTimeStudies = [
     cost: 5,
     requirement: [61, () => Perk.studyECRequirement.isBought || !EternityChallenge(11).isUnlocked],
     reqType: TS_REQUIREMENT_TYPE.DIMENSION_PATH,
-    description: "Dimensional Sacrifice affects 3rd Time Dimension with greatly reduced effect",
+    description: "维度献祭以极低的效果加成第三时间维度",
     effect: () => Sacrifice.totalBoost.pow(0.005).clampMin(1),
     cap: DC.E1300,
     formatEffect: value => formatX(value, 2, 1)
@@ -176,7 +176,7 @@ export const normalTimeStudies = [
     cost: 4,
     requirement: [71],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `Base Dimension Boost power becomes ${formatX(10)}`,
+    description: () => `维度提升的效果更改为 ${formatX(10)}`,
     effect: 10
   },
   {
@@ -184,7 +184,7 @@ export const normalTimeStudies = [
     cost: 6,
     requirement: [72],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Dimension Boosts affect Infinity Dimensions",
+    description: "维度提升加成无限维度",
     effect: () => DC.D1_0000109.pow(Math.pow(DimBoost.totalBoosts, 2)),
     cap: DC.E1E7,
     formatEffect: value => formatX(value, 2, 1)
@@ -194,7 +194,7 @@ export const normalTimeStudies = [
     cost: 5,
     requirement: [73],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Dimension Boost multiplier based on tick upgrades gained from TDs",
+    description: "基于从时间维度获得的计数频率升级，获得维度提升倍数加成",
     effect: () => DC.D1_0004.pow(player.totalTickGained),
     cap: DC.E30,
     formatEffect: value => formatX(value, 2, 1)
@@ -204,7 +204,7 @@ export const normalTimeStudies = [
     cost: 4,
     requirement: [81],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Antimatter Dimension multiplier based on time spent in this Eternity",
+    description: "基于本次永恒中花费的时间，给予所有反物质维度倍数加成",
     effect: () => Decimal.pow10(Math.min(Time.thisEternity.totalMinutes, 20) * 15),
     cap: DC.E300,
     formatEffect: value => formatX(value, 2, 1)
@@ -214,7 +214,7 @@ export const normalTimeStudies = [
     cost: 5,
     requirement: [82],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Infinity Dimension multiplier based on fastest Eternity time",
+    description: "基于最快的永恒时间，给予所有无限维度倍数加成",
     effect: () => DC.D2.pow(60 / Math.max(Time.bestEternity.totalSeconds, 2)),
     cap: DC.C2P30,
     formatEffect: value => formatX(value, 2, 1)
@@ -224,7 +224,7 @@ export const normalTimeStudies = [
     cost: 7,
     requirement: [83],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Time Dimension multiplier based on tick upgrades gained",
+    description: "基于计数频率升级数量，给予所有时间维度倍数加成",
     effect: () => Decimal.pow(player.totalTickGained, 0.25).clampMin(1),
     formatEffect: value => formatX(value, 2, 1)
   },
@@ -233,7 +233,7 @@ export const normalTimeStudies = [
     cost: 4,
     requirement: [91],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Antimatter Dimension multiplier equal to Replicanti amount",
+    description: "所有反物质维度获得等于复制器数量的倍数加成",
     effect: () => Decimal.max(Replicanti.amount, 1),
     formatEffect: value => formatX(value, 2, 1)
   },
@@ -242,7 +242,7 @@ export const normalTimeStudies = [
     cost: 6,
     requirement: [92],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Replicanti Galaxies boost Replicanti multiplier",
+    description: "复制器星系增强复制器提供的倍数",
     effect: () => DC.D5.pow(player.replicanti.galaxies),
     formatEffect: value => formatX(value, 2, 1)
   },
@@ -251,7 +251,7 @@ export const normalTimeStudies = [
     cost: 6,
     requirement: [93],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Time Dimension multiplier equal to Replicanti Galaxy amount",
+    description: "时间维度获得等于复制器星系数量的加成",
     effect: () => Math.max(player.replicanti.galaxies, 1),
     formatEffect: value => formatX(value, 2, 0)
   },
@@ -261,8 +261,8 @@ export const normalTimeStudies = [
     requirement: [101, 102, 103],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     description: () => (Achievement(103).canBeApplied
-      ? `Make the Infinity Point formula better log(x)/${formatFloat(307.8, 1)} ➜ log(x)/${formatInt(285)}`
-      : `Make the Infinity Point formula better log(x)/${formatInt(308)} ➜ log(x)/${formatInt(285)}`),
+      ? `无限点公式变得更好 log(x)/${formatFloat(307.8, 1)} ➜ log(x)/${formatInt(285)}`
+      : `无限点公式变得更好 log(x)/${formatInt(308)} ➜ log(x)/${formatInt(285)}`),
     effect: 285
   },
   {
@@ -273,9 +273,8 @@ export const normalTimeStudies = [
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [122, 123],
     description: () => (Perk.studyActiveEP.isBought
-      ? `You gain ${formatX(50)} more Eternity Points`
-      : `You gain more EP based on how fast your last ten Eternities
-      were${PlayerProgress.realityUnlocked() ? " (real time)" : ""}`),
+      ? `获得 ${formatX(50)} 倍永恒点数`
+      : `基于你前十次永恒的速度，获得更多的永恒点数${PlayerProgress.realityUnlocked() ? " (现实时间)" : ""}`),
     effect: () => (Perk.studyActiveEP.isBought
       ? 50
       : Math.clamp(250 / Player.averageRealTimePerEternity, 1, 50)),
@@ -290,8 +289,8 @@ export const normalTimeStudies = [
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [121, 123],
     description: () => (Perk.studyPassive.isBought
-      ? `You gain ${formatX(50)} more Eternity Points`
-      : `You gain ${formatX(35)} more Eternity Points`),
+      ? `获得 ${formatX(50)} 倍永恒点数`
+      : `获得 ${formatX(35)} 倍永恒点数`),
     effect: () => (Perk.studyPassive.isBought ? 50 : 35)
   },
   {
@@ -301,7 +300,7 @@ export const normalTimeStudies = [
     requirement: [111],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [121, 122],
-    description: "You gain more Eternity Points based on time spent this Eternity",
+    description: "基于本次永恒内花费的时间获得更多永恒点数",
     effect: () => {
       const perkEffect = TimeSpan.fromMinutes(Perk.studyIdleEP.effectOrDefault(0));
       const totalSeconds = Time.thisEternity.plus(perkEffect).totalSeconds;
@@ -317,8 +316,8 @@ export const normalTimeStudies = [
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [132, 133],
     description: () => (Achievement(138).isUnlocked
-      ? `You can get ${formatPercents(0.5)} more Replicanti Galaxies`
-      : `Automatic Replicanti Galaxies are disabled, but you can get ${formatPercents(0.5)} more`),
+      ? `你可以多获得 ${formatPercents(0.5)} 复制器星系`
+      : `禁用复制器星系的自动购买，但你可以多获得 ${formatPercents(0.5)}`),
     effect: () => Math.floor(player.replicanti.boughtGalaxyCap / 2)
   },
   {
@@ -329,9 +328,9 @@ export const normalTimeStudies = [
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [131, 133],
     description: () => (Pelle.isDoomed
-      ? `Replicanti Galaxies are ${formatPercents(0.4)} stronger`
-      : `Replicanti Galaxies are ${formatPercents(0.4)} stronger and Replicanti are 
-        ${Perk.studyPassive.isBought ? formatX(3) : formatX(1.5, 1, 1)} faster`),
+      ? `复制器星系的效果增强 ${formatPercents(0.4)}`
+      : `复制器星系的效果增强 ${formatPercents(0.4)}，且复制速度加快到
+        ${Perk.studyPassive.isBought ? formatX(3) : formatX(1.5, 1, 1)} 倍`),
     effect: 0.4
   },
   {
@@ -342,9 +341,9 @@ export const normalTimeStudies = [
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [131, 132],
     description: () => (Achievement(138).isUnlocked
-      ? `Replicanti Galaxies are ${formatPercents(0.5)} stronger`
-      : `Replicanti are ${formatX(10)} slower until ${format(Number.MAX_VALUE, 2)}` +
-    `, but Replicanti Galaxies are ${formatPercents(0.5)} stronger`),
+      ? `复制器星系的效果增强 ${formatPercents(0.5)}`
+      : `复制速度在达到 ${format(Number.MAX_VALUE, 2)} 之前减慢 ${formatX(10)} 倍` +
+    `，但是复制器星系的效果增强 ${formatPercents(0.5)}`),
     effect: 0.5
   },
   {
@@ -355,8 +354,8 @@ export const normalTimeStudies = [
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [142, 143],
     description: () => (Perk.studyActiveEP.isBought
-      ? `You gain ${formatX(DC.E45)} more Infinity Points`
-      : "Multiplier to Infinity Points, which decays over this Infinity"),
+      ? `获得 ${formatX(DC.E45)} 倍无限点数`
+      : "无限点数获得在本次无限中逐渐衰减的倍数加成"),
     effect: () => (Perk.studyActiveEP.isBought
       ? DC.E45
       : DC.E45.divide(thisInfinityMult(Time.thisInfinity.totalSeconds)).clampMin(1)),
@@ -369,7 +368,7 @@ export const normalTimeStudies = [
     requirement: [132],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [141, 143],
-    description: () => `You gain ${formatX(passiveIPMult())} more Infinity Points`,
+    description: () => `获得 ${formatX(passiveIPMult())} 倍无限点数`,
     effect: passiveIPMult,
     cap: () => (Effarig.eternityCap === undefined ? undefined : Effarig.eternityCap.toNumber())
   },
@@ -380,7 +379,7 @@ export const normalTimeStudies = [
     requirement: [133],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [141, 142],
-    description: "Multiplier to Infinity Points, which increases over this Infinity",
+    description: "无限点数获得在本次无限中逐渐增强的倍数加成",
     effect: () => {
       const perkEffect = TimeSpan.fromMinutes(Perk.studyIdleEP.effectOrDefault(0));
       const totalSeconds = Time.thisInfinity.plus(perkEffect).totalSeconds;
@@ -394,7 +393,7 @@ export const normalTimeStudies = [
     cost: 8,
     requirement: [141, 142, 143],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `${formatX(1e4)} multiplier on all Time Dimensions`,
+    description: () => `所有时间维度获得 ${formatX(1e4)} 倍率`,
     effect: 1e4
   },
   {
@@ -402,7 +401,7 @@ export const normalTimeStudies = [
     cost: 7,
     requirement: [151],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `${formatX(DC.E616)} multiplier on all Antimatter Dimensions`,
+    description: () => `所有反物质维度获得 ${formatX(DC.E616)} 倍率`,
     effect: () => DC.E616
   },
   {
@@ -410,7 +409,7 @@ export const normalTimeStudies = [
     cost: 7,
     requirement: [151],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `${formatX(1e11)} multiplier on all Infinity Dimensions`,
+    description: () => `所有无限维度获得 ${formatX(1e11)} 倍率`,
     effect: 1e11
   },
   {
@@ -418,7 +417,7 @@ export const normalTimeStudies = [
     cost: 15,
     requirement: [161, 162],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `Time Shard requirement for the next Tickspeed upgrade goes up slower
+    description: () => `每个免费计数频率升级所需的时间碎片增速减缓
       ${formatX(1.33, 0, 2)} ➜ ${formatX(1.25, 0, 2)}`,
     effect: () => TS171_MULTIPLIER
   },
@@ -430,7 +429,7 @@ export const normalTimeStudies = [
       () => EternityChallenge(2).completions > 0 || Perk.bypassEC2Lock.isBought,
       () => EternityChallenge(3).completions > 0 || Perk.bypassEC3Lock.isBought],
     reqType: TS_REQUIREMENT_TYPE.ALL,
-    description: () => `You gain ${formatPercents(0.01)} of your Infinity Points gained on crunch each second`,
+    description: () => `每秒钟自动获得大坍缩时能获得的无限点数的 ${formatPercents(0.01)}`,
     effect: () => gainedInfinityPoints().times(Time.deltaTime / 100)
       .timesEffectOf(Ra.unlocks.continuousTTBoost.effects.autoPrestige)
   },
@@ -439,8 +438,7 @@ export const normalTimeStudies = [
     cost: 400,
     requirement: [181, () => EternityChallenge(10).completions > 0],
     reqType: TS_REQUIREMENT_TYPE.ALL,
-    description: () => `After Eternity you permanently keep ${formatPercents(0.05)}
-    of your Infinities as Banked Infinities`,
+    description: () => `永恒时，永久保留 ${formatPercents(0.05)} 的无限次数`,
     effect: () => Currency.infinities.value.times(0.05).floor()
   },
   {
@@ -449,15 +447,15 @@ export const normalTimeStudies = [
     requirement: [181, () => EternityChallenge(10).completions > 0, () => !Enslaved.isRunning],
     reqType: TS_REQUIREMENT_TYPE.ALL,
     description: () => (Enslaved.isRunning
-      ? "There is not enough space in this Reality"
-      : `Replicanti can go beyond ${format(replicantiCap(), 2, 1)}, but growth slows down at higher amounts`)
+      ? "这个现实中没有足够的空间"
+      : `复制器数量可以超过 ${format(replicantiCap(), 2, 1)}，但是增长速度将会变慢`)
   },
   {
     id: 193,
     cost: 300,
     requirement: [181, () => EternityChallenge(10).completions > 0],
     reqType: TS_REQUIREMENT_TYPE.ALL,
-    description: "Antimatter Dimension multiplier based on Eternities",
+    description: "基于永恒次数获得反物质维度倍率",
     effect: () => (DC.E13000.pow(Currency.eternities.value.div(1e6).clampMax(1))),
     cap: DC.E13000,
     formatEffect: value => formatX(value, 2, 1)
@@ -467,14 +465,14 @@ export const normalTimeStudies = [
     cost: 900,
     requirement: [192],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Pick a second path from the Dimension Split"
+    description: "在时间研究树的维度分叉上可以同时选择两条路径"
   },
   {
     id: 211,
     cost: 120,
     requirement: [191],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `Dimension Boost requirement scaling is reduced by ${formatInt(5)}`,
+    description: () => `维度提升的价格增速减少 ${formatInt(5)}`,
     effect: 5
   },
   {
@@ -482,7 +480,7 @@ export const normalTimeStudies = [
     cost: 150,
     requirement: [191],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "All Galaxies are stronger based on your Time Shards",
+    description: "基于时间碎片数量增强星系",
     effect: () => Math.pow(Currency.timeShards.value.clampMin(2).log2(), 0.005),
     cap: 1.1,
     formatEffect: value => `+${formatPercents(value - 1, 3)}`
@@ -492,7 +490,7 @@ export const normalTimeStudies = [
     cost: 200,
     requirement: [193],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: () => `You gain Replicanti ${formatInt(20)} times faster`,
+    description: () => `获得复制器的速度提高到 ${formatInt(20)} 倍`,
     effect: 20
   },
   {
@@ -500,7 +498,7 @@ export const normalTimeStudies = [
     cost: 120,
     requirement: [193],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
-    description: "Dimensional Sacrifice boosts the 8th Antimatter Dimension even more",
+    description: "维度献祭进一步提升第八维度",
     effect: () => {
       const totalBoost = Sacrifice.totalBoost;
       const firstPart = totalBoost.pow(7.6).clampMaxExponent(44000);
@@ -517,7 +515,7 @@ export const normalTimeStudies = [
     requirement: [211],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [222],
-    description: "Time Dimension multiplier based on Dimension Boosts",
+    description: "基于维度提升数量获得时间维度倍率",
     effect: () => DC.D1_0025.pow(DimBoost.totalBoosts),
     formatEffect: value => formatX(value, 2, 1)
   },
@@ -528,7 +526,7 @@ export const normalTimeStudies = [
     requirement: [211],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [221],
-    description: () => `Dimension Boost costs scale by another ${formatInt(2)} less`,
+    description: () => `维度提升的价格增速进一步减少 ${formatInt(2)}`,
     effect: 2
   },
   {
@@ -538,7 +536,7 @@ export const normalTimeStudies = [
     requirement: [212],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [224],
-    description: () => `Distant Galaxy cost scaling starts ${formatInt(7)} Galaxies later`,
+    description: () => `遥远星系的价格增长推迟 ${formatInt(7)} 个星系`,
     effect: 7
   },
   {
@@ -550,8 +548,8 @@ export const normalTimeStudies = [
     requiresST: [223],
     description() {
       const effect = TimeStudy(224).effectValue;
-      return `Distant Galaxy cost scaling starts ${quantifyInt("Galaxy", effect)} later
-        (${formatInt(1)} per ${formatInt(2000)} Dim Boosts)`;
+      return `遥远星系的价格增长推迟 ${quantifyInt("个星系", effect)}
+        (每 ${formatInt(2000)} 个维度提升 ${formatInt(1)} 个)`;
     },
     effect: () => Math.floor(DimBoost.totalBoosts / 2000)
   },
@@ -562,9 +560,9 @@ export const normalTimeStudies = [
     requirement: [213],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [226],
-    description: "You gain extra Replicanti Galaxies based on Replicanti amount",
+    description: "基于复制器数量获得额外的复制器星系",
     effect: () => Math.floor(Replicanti.amount.exponent / 1000),
-    formatEffect: value => `+${formatInt(value)} RG`
+    formatEffect: value => `+${formatInt(value)} 复制器星系`
   },
   {
     id: 226,
@@ -573,7 +571,7 @@ export const normalTimeStudies = [
     requirement: [213],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [225],
-    description: "You gain extra Replicanti Galaxies based on their max",
+    description: "基于最大复制器星系数量获得额外的复制器星系",
     effect: () => Math.floor(player.replicanti.boughtGalaxyCap / 15),
     formatEffect: value => `+${formatInt(value)} RG`
   },
@@ -584,7 +582,7 @@ export const normalTimeStudies = [
     requirement: [214],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [228],
-    description: "Dimensional Sacrifice affects 4th Time Dimension with reduced effect",
+    description: "维度献祭以较低的效果加成第四时间维度",
     effect: () => Math.max(Math.pow(Sacrifice.totalBoost.pLog10(), 10), 1),
     formatEffect: value => formatX(value, 2, 2)
   },
@@ -595,7 +593,7 @@ export const normalTimeStudies = [
     requirement: [214],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [227],
-    description: () => `Dimensional Sacrifice formula scales better
+    description: () => `维度献祭的加成公式变得更好
       ${Sacrifice.getSacrificeDescription({ "TimeStudy228": false })} ➜
       ${Sacrifice.getSacrificeDescription({ "TimeStudy228": true })}`,
     effect: 0.2
@@ -607,7 +605,7 @@ export const normalTimeStudies = [
     requirement: [221, 222],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [232],
-    description: "Dimension Boosts are stronger based on their amount",
+    description: "维度提升基于其数量获得倍率加成",
     effect: () => Decimal.pow(DimBoost.totalBoosts, 0.3).clampMin(1),
     formatEffect: value => formatX(value, 2, 2)
   },
@@ -618,7 +616,7 @@ export const normalTimeStudies = [
     requirement: [223, 224],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [231],
-    description: "All Galaxies are stronger based on Antimatter Galaxies",
+    description: "基于反物质星系数量增强所有星系",
     effect: () => Math.pow(1 + player.galaxies / 1000, 0.2),
     formatEffect: value => `+${formatPercents(value - 1, 3)}`
   },
@@ -629,7 +627,7 @@ export const normalTimeStudies = [
     requirement: [225, 226],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [234],
-    description: "Max Replicanti Galaxy upgrade is cheaper based on current Replicanti",
+    description: "基于当前的复制器数量，降低复制器星系上限升级的价格",
     effect: () => Replicanti.amount.pow(0.3),
     formatEffect: value => `/ ${format(value, 1, 2)}`
   },
@@ -640,7 +638,7 @@ export const normalTimeStudies = [
     requirement: [227, 228],
     reqType: TS_REQUIREMENT_TYPE.AT_LEAST_ONE,
     requiresST: [233],
-    description: "Dimensional Sacrifice applies to 1st Antimatter Dimension",
+    description: "维度献祭也加成第一维度",
     effect: () => Sacrifice.totalBoost,
   },
   // Note: These last 4 entries are the triad studies
@@ -651,7 +649,7 @@ export const normalTimeStudies = [
     requirement: [() => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 1, 221, 222, 231],
     reqType: TS_REQUIREMENT_TYPE.ALL,
     requiresST: [221, 222, 231],
-    description: "Time Study 231 improves the effect of Time Study 221",
+    description: "时间研究231提升时间研究221的效果",
     effect: () => TimeStudy(221).effectValue.pow(TimeStudy(231).effectValue.minus(1)).clampMin(1),
     formatEffect: value => formatX(value, 2, 1),
     unlocked: () => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 1
@@ -663,7 +661,7 @@ export const normalTimeStudies = [
     requirement: [() => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 2, 223, 224, 232],
     reqType: TS_REQUIREMENT_TYPE.ALL,
     requiresST: [223, 224, 232],
-    description: () => `Distant Galaxy scaling threshold starts another ${formatInt(3000)} Antimatter Galaxies later`,
+    description: () => `遥远星系的价格增长再推迟 ${formatInt(3000)} 星系`,
     effect: 3000,
     unlocked: () => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 2
   },
@@ -674,8 +672,7 @@ export const normalTimeStudies = [
     requirement: [() => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 3, 225, 226, 233],
     reqType: TS_REQUIREMENT_TYPE.ALL,
     requiresST: [225, 226, 233],
-    description: () => `Gain ${formatPercents(0.5)} more extra Replicanti Galaxies from Time Studies 225 and 226,
-      and from Effarig's Infinity`,
+    description: () => `从时间研究225、226以及鹿颈长的无限中多获得 ${formatPercents(0.5)} 复制器星系`,
     effect: 1.5,
     unlocked: () => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 3
   },
@@ -686,7 +683,7 @@ export const normalTimeStudies = [
     requirement: [() => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 4, 227, 228, 234],
     reqType: TS_REQUIREMENT_TYPE.ALL,
     requiresST: [227, 228, 234],
-    description: "Dimensional Sacrifice multiplier is squared",
+    description: "维度献祭倍率提升为原来的平方",
     effect: 2,
     unlocked: () => Ra.unlocks.unlockHardV.effectOrDefault(0) >= 4
   }

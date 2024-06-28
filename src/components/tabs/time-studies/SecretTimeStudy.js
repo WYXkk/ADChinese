@@ -65,10 +65,10 @@ export default {
     @click="handleClick"
   >
     <span>
-      Unlock a Secret Achievement
+      解锁一个隐藏成就
       <br>
       <br>
-      (Double click to hide)
+      (双击以隐藏)
     </span>
   </button>
   `

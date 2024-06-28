@@ -1,7 +1,7 @@
 export const dilationTimeStudies = [
   {
     id: 1,
-    description: "Unlock Time Dilation",
+    description: "解锁时间膨胀",
     cost: 5000,
     requirement: () => {
       const ttRequirement = Currency.timeTheorems.max.gte(TimeStudy.dilation.totalTimeTheoremRequirement);
@@ -19,33 +19,33 @@ export const dilationTimeStudies = [
   },
   {
     id: 2,
-    description: "Unlock the 5th Time Dimension",
+    description: "解锁第五时间维度",
     cost: 1e6,
     requirement: () => PlayerProgress.dilationUnlocked()
   },
   {
     id: 3,
-    description: "Unlock the 6th Time Dimension",
+    description: "解锁第六时间维度",
     cost: 1e7,
     requirement: () => TimeStudy.timeDimension(5).isBought
   },
   {
     id: 4,
-    description: "Unlock the 7th Time Dimension",
+    description: "解锁第七时间维度",
     cost: 1e8,
     requirement: () => TimeStudy.timeDimension(6).isBought
   },
   {
     id: 5,
-    description: "Unlock the 8th Time Dimension",
+    description: "解锁第八时间维度",
     cost: 1e9,
     requirement: () => TimeStudy.timeDimension(7).isBought
   },
   {
     id: 6,
     description: () => (Pelle.isDoomed
-      ? "You cannot escape a Doomed Reality"
-      : "Unlock Reality"),
+      ? "你无法逃离被毁灭的现实"
+      : "解锁现实"),
     cost: 1,
     requirement: () => TimeStudy.timeDimension(8).isBought &&
       player.records.thisReality.maxEP.exponent >= 4000 &&
