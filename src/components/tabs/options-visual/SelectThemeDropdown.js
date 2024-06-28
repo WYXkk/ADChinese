@@ -24,7 +24,7 @@ export default {
         class="o-primary-btn l-select-theme__item c-select-theme__item"
         @click="theme.set()"
       >
-        {{ theme.displayName() }}
+        {{ theme.displayNameWithTranslation() }}
       </div>
     </div>
   </div>

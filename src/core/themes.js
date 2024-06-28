@@ -1,7 +1,9 @@
 import { sha512_256 } from "../../modules/sha512.js";
 
-export const Theme = function Theme(name, config) {
+export const Theme = function Theme(name, config, translatedName) {
   this.name = name;
+
+  this.translatedName = translatedName;
 
   this.isDark = function() {
     return (this.isDefault() || name === "S12")
@@ -27,6 +29,12 @@ export const Theme = function Theme(name, config) {
 
   this.displayName = function() {
     if (!this.isSecret || !this.isAvailable()) return name;
+    // Secret themes are stored as "S9Whatever", so we need to strip the SN part
+    return player.secretUnlocks.themes.find(theme => theme.match(/^S[0-9]*/u)[0] === name).replace(/^S[0-9]*/u, "");
+  };
+
+  this.displayNameWithTranslation = function() {
+    if (!this.isSecret || !this.isAvailable()) return translatedName;
     // Secret themes are stored as "S9Whatever", so we need to strip the SN part
     return player.secretUnlocks.themes.find(theme => theme.match(/^S[0-9]*/u)[0] === name).replace(/^S[0-9]*/u, "");
   };
@@ -114,37 +122,37 @@ Theme.tryUnlock = function(name) {
   Theme.set(prefix);
   SecretAchievement(25).unlock();
   if (!isAlreadyUnlocked) {
-    GameUI.notify.success(`You have unlocked the ${name.capitalize()} theme!`, 5000);
+    GameUI.notify.success(`你解锁了 ${name.capitalize()} 主题！`, 5000);
     if (Theme.current().isAnimated) {
-      setTimeout(Modal.message.show(`This secret theme has animations. If they are giving you performance issues,
-        you can turn them off in the Options/Visual tab to reduce lag.`), 100);
+      setTimeout(Modal.message.show(`这个隐藏主题有动画效果。如果这会带来卡顿问题，` +
+        `你可以在选项 - 视觉效果里关闭动画。`), 100);
     }
   }
   return true;
 };
 
-Theme.create = function(name, settings) {
+Theme.create = function(name, settings, translatedName="") {
   const config = {
     isDark: false || settings.dark,
     isMetro: false || settings.metro,
     isAnimated: false || settings.animated,
     isSecret: false || settings.secret,
   };
-  return new Theme(name, config);
+  return new Theme(name, config, translatedName);
 };
 
 export const Themes = {
   all: [
     /* eslint-disable no-multi-spaces */
     // Note that "Normal" is a special case where dark is overridden elsewhere with whether or not the UI is Modern
-    Theme.create("Normal",          {                                                         }),
-    Theme.create("Metro",           {              metro: true,                               }),
-    Theme.create("Dark",            { dark: true,                                             }),
-    Theme.create("Dark Metro",      { dark: true,  metro: true,                               }),
-    Theme.create("Inverted",        {                                                         }),
-    Theme.create("Inverted Metro",  {              metro: true,                               }),
-    Theme.create("AMOLED",          { dark: true,                                             }),
-    Theme.create("AMOLED Metro",    { dark: true,  metro: true,                               }),
+    Theme.create("Normal",          {                                                         }, "默认"),
+    Theme.create("Metro",           {              metro: true,                               }, "摩登"),
+    Theme.create("Dark",            { dark: true,                                             }, "深色"),
+    Theme.create("Dark Metro",      { dark: true,  metro: true,                               }, "深色 摩登"),
+    Theme.create("Inverted",        {                                                         }, "反转"),
+    Theme.create("Inverted Metro",  {              metro: true,                               }, "反转 摩登"),
+    Theme.create("AMOLED",          { dark: true,                                             }, "发光"),
+    Theme.create("AMOLED Metro",    { dark: true,  metro: true,                               }, "发光 摩登"),
     Theme.create("S1",              {                           animated: true, secret: true, }),
     Theme.create("S2",              {                                           secret: true, }),
     Theme.create("S3",              {                                           secret: true, }),

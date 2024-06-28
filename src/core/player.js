@@ -772,7 +772,7 @@ window.player = {
       speed: 1,
       includeAnimated: true,
     },
-    notation: "Mixed scientific",
+    notation: "科学记数法",
     notationDigits: {
       comma: 5,
       notation: 9

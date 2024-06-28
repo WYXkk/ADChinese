@@ -265,7 +265,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(ScientificNotation.prototype, "name", {
       get: function get() {
-        return "Scientific";
+        return "科学记数法";
       },
       enumerable: false,
       configurable: true
@@ -287,7 +287,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(EngineeringNotation.prototype, "name", {
       get: function get() {
-        return "Engineering";
+        return "工程记数法";
       },
       enumerable: false,
       configurable: true
@@ -327,7 +327,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(CustomNotation.prototype, "name", {
       get: function get() {
-        return "Custom";
+        return "自定义";
       },
       enumerable: false,
       configurable: true
@@ -378,7 +378,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(LettersNotation.prototype, "name", {
       get: function get() {
-        return "Letters";
+        return "字母";
       },
       enumerable: false,
       configurable: true
@@ -411,7 +411,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
     function StandardNotation() {
       var _this = _super !== null && _super.apply(this, arguments) || this;
 
-      _this.name = "Standard";
+      _this.name = "标准计数法";
       return _this;
     }
 
@@ -433,7 +433,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(MixedScientificNotation.prototype, "name", {
       get: function get() {
-        return "Mixed scientific";
+        return "混合科学计数法";
       },
       enumerable: false,
       configurable: true
@@ -461,7 +461,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(MixedEngineeringNotation.prototype, "name", {
       get: function get() {
-        return "Mixed engineering";
+        return "混合工程计数法";
       },
       enumerable: false,
       configurable: true
@@ -487,7 +487,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(LogarithmNotation.prototype, "name", {
       get: function get() {
-        return "Logarithm";
+        return "对数";
       },
       enumerable: false,
       configurable: true
@@ -512,7 +512,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(BracketsNotation.prototype, "name", {
       get: function get() {
-        return "Brackets";
+        return "括号";
       },
       enumerable: false,
       configurable: true
@@ -553,7 +553,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(InfinityNotation.prototype, "name", {
       get: function get() {
-        return "Infinity";
+        return "无限";
       },
       enumerable: false,
       configurable: true
@@ -589,7 +589,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(RomanNotation.prototype, "name", {
       get: function get() {
-        return "Roman";
+        return "罗马数字";
       },
       enumerable: false,
       configurable: true
@@ -660,7 +660,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(DotsNotation.prototype, "name", {
       get: function get() {
-        return "Dots";
+        return "点";
       },
       enumerable: false,
       configurable: true
@@ -725,7 +725,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(ZalgoNotation.prototype, "name", {
       get: function get() {
-        return "Zalgo";
+        return "鬼画符";
       },
       enumerable: false,
       configurable: true
@@ -781,7 +781,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(HexNotation.prototype, "name", {
       get: function get() {
-        return "Hex";
+        return "十六进制";
       },
       enumerable: false,
       configurable: true
@@ -889,7 +889,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(ImperialNotation.prototype, "name", {
       get: function get() {
-        return "Imperial";
+        return "非标准单位";
       },
       enumerable: false,
       configurable: true
@@ -1095,7 +1095,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(ClockNotation.prototype, "name", {
       get: function get() {
-        return "Clock";
+        return "时钟";
       },
       enumerable: false,
       configurable: true
@@ -1198,7 +1198,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(PrimeNotation.prototype, "name", {
       get: function get() {
-        return "Prime";
+        return "质数";
       },
       enumerable: false,
       configurable: true
@@ -1363,7 +1363,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(BarNotation.prototype, "name", {
       get: function get() {
-        return "Bar";
+        return "条形图";
       },
       enumerable: false,
       configurable: true
@@ -1453,7 +1453,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(ShiNotation.prototype, "name", {
       get: function get() {
-        return "Shi";
+        return "施氏食狮史";
       },
       enumerable: false,
       configurable: true
@@ -1587,7 +1587,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(BlindNotation.prototype, "name", {
       get: function get() {
-        return "Blind";
+        return "空白";
       },
       enumerable: false,
       configurable: true
@@ -1645,7 +1645,7 @@ export const ADNotations = (function (exports, Decimal, tslib) { 'use strict';
 
     Object.defineProperty(AllNotation.prototype, "name", {
       get: function get() {
-        return "ALL";
+        return "随机";
       },
       enumerable: false,
       configurable: true
