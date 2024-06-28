@@ -17,7 +17,7 @@ export default {
   computed: {
     disableText() {
       // Doesn't need to be reactive or check strike status; it's always permanent once entered in Doomed
-      return Pelle.isDoomed ? "Dilation is permanent." : "Disable Dilation.";
+      return Pelle.isDoomed ? "时间膨胀永久生效。" : "退出时间膨胀。";
     }
   },
   methods: {
@@ -52,25 +52,25 @@ export default {
   >
     <span v-if="!isUnlocked">Purchase the Dilation Study to unlock.</span>
     <span v-else-if="!isRunning">
-      Dilate time.
+      进入时间膨胀。
       <div v-if="showRequirement">
-        Requires {{ format(remnantRequirement, 2) }} Remnants
+        需要 {{ format(remnantRequirement, 2) }} 遗物
       </div>
     </span>
     <span v-else-if="canEternity && hasGain">
       {{ disableText }}
       <br>
-      Gain {{ quantify("Tachyon Particle", tachyonGain, 2, 1) }}.
+      获得 {{ quantify("超光速粒子", tachyonGain, 2, 1) }}。
     </span>
     <span v-else-if="hasGain">
       {{ disableText }}
       <br>
-      Reach {{ quantify("Infinity Point", eternityGoal, 1, 0) }} to Eternity and gain Tachyon Particles.
+      达到 {{ quantify("无限点数", eternityGoal, 1, 0) }}以永恒并获得超光速粒子。
     </span>
     <span v-else>
       {{ disableText }}
       <br>
-      Reach {{ format(requiredForGain, 2, 1) }} antimatter to gain more Tachyon Particles.
+      达到 {{ format(requiredForGain, 2, 1) }} 反物质以获得更多超光速粒子。
     </span>
   </button>
   `

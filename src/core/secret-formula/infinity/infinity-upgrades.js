@@ -205,7 +205,7 @@ export const infinityUpgrades = {
     checkRequirement: () => Achievement(41).isUnlocked,
     description: () => (player.options.offlineProgress
       ? `仅在离线时，自动获得无限点数，速度为未使用 "最大" 按钮时所取得的最佳 "无限点数/分钟" 的 ${formatPercents(0.5)}`
-      : "此升级将在离线时产生无限点数，但目前已禁用离线进度"),
+      : "此升级将在离线时生产无限点数，但目前已禁用离线进度"),
     effect: () => (player.options.offlineProgress
       ? player.records.thisEternity.bestIPMsWithoutMaxAll.times(TimeSpan.fromMinutes(1).totalMilliseconds / 2)
       : DC.D0),
@@ -218,7 +218,7 @@ export const infinityUpgrades = {
     checkRequirement: () => Achievement(41).isUnlocked,
     costCap: DC.E6E6,
     costIncreaseThreshold: DC.E3E6,
-    description: () => `将所有来源的无限点乘以 ${formatX(2)}`,
+    description: () => `将所有来源的无限点数乘以 ${formatX(2)}`,
     // Normally the multiplier caps at e993k or so with 3300000 purchases, but if the cost is capped then we just give
     // an extra e7k to make the multiplier look nice
     effect: () => (player.IPMultPurchases >= 3300000 ? DC.E1E6 : DC.D2.pow(player.IPMultPurchases)),

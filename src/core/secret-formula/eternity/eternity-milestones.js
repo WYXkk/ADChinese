@@ -1,26 +1,26 @@
 export const eternityMilestones = {
   autobuyerIPMult: {
     eternities: 1,
-    reward: "Unlock the Infinity Point multiplier autobuyer",
+    reward: "解锁无限点数倍增的自动购买器",
     pelleUseless: true
   },
   keepAutobuyers: {
     eternities: 2,
-    reward: "You start Eternity with all Normal Challenges complete, all normal autobuyers, and infinity broken"
+    reward: "开始永恒时，无限已经打破、普通挑战全部完成且保留自动购买器"
   },
   autobuyerReplicantiGalaxy: {
     eternities: 3,
-    reward: "Unlock the Replicanti Galaxy Autobuyer"
+    reward: "解锁自动购买复制器星系"
   },
   keepInfinityUpgrades: {
     eternities: 4,
-    reward: "You start Eternity with all Infinity Upgrades",
+    reward: "开始永恒时拥有所有无限升级",
     givenByPelle: () => PelleUpgrade.keepInfinityUpgrades.isBought,
     pelleUseless: true
   },
   bigCrunchModes: {
     eternities: 5,
-    reward: "Unlock more Big Crunch Autobuyer options"
+    reward: "解锁更多自动大坍缩选项"
   },
   autoEP: {
     eternities: 6,
@@ -30,159 +30,151 @@ export const eternityMilestones = {
         EternityMilestone.autoEternities.isReached).gt(0);
       const em1000 = getInfinitiedMilestoneReward(TimeSpan.fromHours(1).totalMilliseconds,
         EternityMilestone.autoInfinities.isReached).gt(0);
-      if (!player.options.offlineProgress) return `This milestone would give offline EP generation, but offline progress
-        is currently disabled`;
-      const effectText = (em200 || em1000) ? "Inactive" : `Currently ${format(EPmin, 2, 2)} EP/min`;
-      return `While offline, gain ${formatPercents(0.25)} of your best Eternity Points per minute from previous
-        Eternities (${effectText})`;
+      if (!player.options.offlineProgress) return `此里程碑将在离线时生产永恒点数，但目前已禁用离线进度`;
+      const effectText = (em200 || em1000) ? "未激活" : `当前 ${format(EPmin, 2, 2)} 永恒点数 / 分钟`;
+      return `离线时，以你之前最佳永恒点数 / 分钟的 ${formatPercents(0.25)} 生产永恒点数 (${effectText})`;
     },
     activeCondition: () => (player.options.offlineProgress
-      ? `Active as long as neither of the other offline milestones
-        (${formatInt(200)} or ${formatInt(1000)}) are also active`
+      ? `另外两个离线里程碑
+        (${formatInt(200)} 和 ${formatInt(1000)}) 都不生效时生效`
       : ""),
   },
   autoIC: {
     eternities: 7,
-    reward: `You complete Infinity Challenges as soon as you unlock them,
-      and keep the Dimensional Sacrifice Autobuyer`,
+    reward: `解锁无限挑战后立刻完成，并保留维度献祭自动购买`,
     pelleUseless: true
   },
   keepBreakUpgrades: {
     eternities: 8,
-    reward: "You start Eternity with all Break Infinity Upgrades",
+    reward: "开始永恒时拥有所有打破无限升级",
     givenByPelle: () => PelleUpgrade.keepBreakInfinityUpgrades.isBought,
     pelleUseless: true
   },
   autobuyMaxGalaxies: {
     eternities: 9,
-    reward: "Unlock the buy max Antimatter Galaxies Autobuyer mode"
+    reward: "解锁自动购买最大数量的反物质星系"
   },
   unlockReplicanti: {
     eternities: 10,
-    reward: "You start with Replicanti unlocked",
+    reward: "开始永恒时立即解锁复制器",
     givenByPelle: () => PelleUpgrade.replicantiStayUnlocked.isBought,
     pelleUseless: true
   },
   autobuyerID1: {
     eternities: 11,
-    reward: "Unlock the 1st Infinity Dimension Autobuyer",
+    reward: "解锁第一无限维度自动购买器",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID2: {
     eternities: 12,
-    reward: "Unlock the 2nd Infinity Dimension Autobuyer",
+    reward: "解锁第二无限维度自动购买器",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID3: {
     eternities: 13,
-    reward: "Unlock the 3rd Infinity Dimension Autobuyer",
+    reward: "解锁第三无限维度自动购买器",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID4: {
     eternities: 14,
-    reward: "Unlock the 4th Infinity Dimension Autobuyer",
+    reward: "解锁第四无限维度自动购买器",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID5: {
     eternities: 15,
-    reward: "Unlock the 5th Infinity Dimension Autobuyer",
+    reward: "解锁第五无限维度自动购买器",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID6: {
     eternities: 16,
-    reward: "Unlock the 6th Infinity Dimension Autobuyer",
+    reward: "解锁第六无限维度自动购买器",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID7: {
     eternities: 17,
-    reward: "Unlock the 7th Infinity Dimension Autobuyer",
+    reward: "解锁第七无限维度自动购买器",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerID8: {
     eternities: 18,
-    reward: "Unlock the 8th Infinity Dimension Autobuyer",
+    reward: "解锁第八无限维度自动购买器",
     givenByPelle: () => PelleUpgrade.IDAutobuyers.isBought,
     pelleUseless: true
   },
   autoUnlockID: {
     eternities: 25,
-    reward: "You automatically unlock Infinity Dimensions upon reaching them"
+    reward: "无限维度在到达反物质要求自动解锁"
   },
   unlockAllND: {
     eternities: 30,
-    reward: "Start with all Antimatter Dimensions available for purchase"
+    reward: "开始永恒时解锁所有反物质维度"
   },
   replicantiNoReset: {
     eternities: 40,
-    reward: `Replicanti Galaxies no longer reset Antimatter, Antimatter Dimensions,
-      Tickspeed, Dimensional Sacrifice, or Dimension Boosts`,
+    reward: `复制器星系不会重置反物质数量、反物质维度、计数频率、维度献祭和维度提升`,
     pelleUseless: true
   },
   autobuyerReplicantiChance: {
     eternities: 50,
-    reward: "Unlock the Replicanti Chance Upgrade Autobuyer",
+    reward: "解锁复制概率升级自动购买器",
     givenByPelle: () => PelleUpgrade.replicantiAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerReplicantiInterval: {
     eternities: 60,
-    reward: "Unlock the Replicanti Interval Upgrade Autobuyer",
+    reward: "解锁复制间隔升级自动购买器",
     givenByPelle: () => PelleUpgrade.replicantiAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerReplicantiMaxGalaxies: {
     eternities: 80,
-    reward: "Unlock the Max Replicanti Galaxy Upgrade Autobuyer",
+    reward: "解锁复制星系升级自动购买器",
     givenByPelle: () => PelleUpgrade.replicantiAutobuyers.isBought,
     pelleUseless: true
   },
   autobuyerEternity: {
     eternities: 100,
-    reward: "Unlock autobuyer for Eternities"
+    reward: "解锁自动永恒"
   },
   autoEternities: {
     eternities: 200,
     reward: () => {
-      if (!player.options.offlineProgress) return `This milestone would generate eternities offline, but offline
-        progress is currently disabled`;
+      if (!player.options.offlineProgress) return `此里程碑将在离线时生产永恒次数，但目前已禁用离线进度`;
       const eternities = getEternitiedMilestoneReward(TimeSpan.fromHours(1).totalMilliseconds,
         player.eternities.gte(200));
       // As far as I can tell, using templates here as Codefactor wants would lead to nested templates,
       // which seems messy to say the least.
-      const realTime = PlayerProgress.seenAlteredSpeed() ? " real-time" : "";
+      const realTime = PlayerProgress.seenAlteredSpeed() ? " (以现实时间计) " : "";
       // eslint-disable-next-line prefer-template
-      return `While offline, gain Eternities at ${formatPercents(0.5)} the rate of your fastest${realTime} Eternity ` +
-        (eternities.gt(0) ? `(Currently ${format(eternities, 2, 2)}/hour)` : "(Inactive)");
+      return `离线时，以你最快永恒速度${realTime}的 ${formatPercents(0.5)} 生产永恒次数 ` +
+        (eternities.gt(0) ? `(当前 ${format(eternities, 2, 2)} / 小时)` : "(未激活)");
     },
     activeCondition: () => (player.options.offlineProgress
-      ? `Must be outside of all Challenges and Dilation, and the Eternity Autobuyer must be set to Eternity at zero EP.
-        This milestone's effect is capped at ${formatInt(33)}ms.`
+      ? `必须不在任何挑战或时间膨胀中，且自动永恒必须开启并设置为 ${formatInt(0)} 永恒点数。` +
+        `这个里程碑的效果在 ${formatInt(33)} 毫秒达到上限。`
       : ""),
       pelleUseless: true
   },
   autoInfinities: {
     eternities: 1000,
     reward: () => {
-      if (!player.options.offlineProgress) return `This milestone would generate infinities offline, but offline
-        progress is currently disabled`;
+      if (!player.options.offlineProgress) return `此里程碑将在离线时生产无限次数，但目前已禁用离线进度`;
       const infinities = getInfinitiedMilestoneReward(TimeSpan.fromHours(1).totalMilliseconds,
         player.eternities.gte(1000));
       // eslint-disable-next-line prefer-template
-      return `While offline, gain Infinities equal to ${formatPercents(0.5)}
-        your best Infinities/hour this Eternity ` +
-        (infinities.gt(0) ? `(Currently ${format(infinities, 2, 2)}/hour)` : "(Inactive)");
+      return `离线时，以你本次永恒中无限次数 / 小时最大值的 ${formatPercents(0.5)} 生产无限次数` +
+        (infinities.gt(0) ? `(当前 ${format(infinities, 2, 2)} / 小时)` : "(未激活)");
     },
     activeCondition: () => (player.options.offlineProgress
-      ? `Must be outside of Normal/Infinity Challenges and outside of EC4 and EC12,
-        the Big Crunch Autobuyer must be turned on and set to time mode with ${formatInt(5)} seconds or less,
-        and the Eternity Autobuyer must be turned off.`
+      ? `必须不在任何普通、无限挑战或永恒挑战4、12中，自动大坍缩必须开启并设置为时间模式，` +
+      `且坍缩时间必须设置在 ${formatInt(5)} 秒以内。自动永恒必须关闭。`
       : ""),
       pelleUseless: true
   }

@@ -54,14 +54,14 @@ export default {
     class="l-eternity-milestone"
   >
     <span class="o-eternity-milestone__goal">
-      {{ quantifyInt("Eternity", eternities) }}:
+      {{ quantifyInt("永恒次数", eternities) }}:
     </span>
     <button
       v-tooltip="activeCondition"
       :class="rewardClassObject"
     >
       <span :class="{ 'o-pelle-disabled': isUseless }">
-        {{ reward }} {{ (isLocked && !isReached) ? "(Locked behind a Pelle Upgrade)" : "" }}
+        {{ reward }} {{ (isLocked && !isReached) ? "(被佩勒升级锁定)" : "" }}
       </span>
     </button>
   </div>

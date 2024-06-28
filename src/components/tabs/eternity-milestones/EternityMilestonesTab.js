@@ -30,9 +30,9 @@ export default {
   },
   template: `
   <div class="l-eternity-milestone-grid">
-    <div>You have {{ quantify("Eternity", eternityCount, 3) }}.</div>
+    <div>你有 {{ quantify("永恒次数", eternityCount, 3) }}.</div>
     <div>
-      Offline generation milestones are only active under certain conditions, mouse-over to see these conditions.
+      离线生产的里程碑在一定条件下才会启用，将鼠标停在其上方可以查看对应的条件。
     </div>
     <div
       v-for="row in rows"
