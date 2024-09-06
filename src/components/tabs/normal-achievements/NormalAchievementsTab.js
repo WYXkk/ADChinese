@@ -41,14 +41,14 @@ export default {
       const boostList = [];
 
       const dimMultList = [];
-      dimMultList.push("Antimatter");
-      if (this.achMultToIDS) dimMultList.push("Infinity");
-      if (this.achMultToTDS) dimMultList.push("Time");
-      boostList.push(`${makeEnumeration(dimMultList)} Dimensions: ${achievementPower}`);
+      dimMultList.push("反物质");
+      if (this.achMultToIDS) dimMultList.push("无限");
+      if (this.achMultToTDS) dimMultList.push("时间");
+      boostList.push(`${makeEnumeration(dimMultList)}维度：${achievementPower}`);
 
-      if (this.achMultToTP) boostList.push(`Tachyon Particles: ${achTPEffect}`);
-      if (this.achMultToBH) boostList.push(`Black Hole Power: ${achievementPower}`);
-      if (this.achMultToTT) boostList.push(`Time Theorem production: ${achievementPower}`);
+      if (this.achMultToTP) boostList.push(`超光速粒子：${achTPEffect}`);
+      if (this.achMultToBH) boostList.push(`黑洞强度：${achievementPower}`);
+      if (this.achMultToTT) boostList.push(`时间之理产量：${achievementPower}`);
       return `${boostList.join("<br>")}`;
     },
   },
@@ -130,43 +130,41 @@ export default {
       <PrimaryToggleButton
         v-model="hideCompletedRows"
         class="o-primary-btn--subtab-option"
-        label="Hide completed rows:"
+        label="隐藏已完成的行："
       />
       <PrimaryToggleButton
         v-if="showAutoAchieve"
         v-model="isAutoAchieveActive"
         class="o-primary-btn--subtab-option"
-        label="Auto Achievements:"
+        label="自动成就："
       />
     </div>
     <div class="c-achievements-tab__header c-achievements-tab__header--multipliers">
       <span v-if="isDoomed">
-        All Achievement multipliers have been disabled<SwapAchievementImagesButton />
+        已禁用成就倍率的所有效果<SwapAchievementImagesButton />
       </span>
       <span v-else>
-        Achievements provide a multiplier to<SwapAchievementImagesButton />
+        成就提供以下的倍率加成<SwapAchievementImagesButton />
         <div v-html="boostText" />
       </span>
     </div>
     <div class="c-achievements-tab__header">
-      Achievements with a <i class="fas fa-star" /> icon also give an additional reward.
+      带有 <i class="fas fa-star" /> 标记的成就会提供一个额外的奖励。
     </div>
     <div
       v-if="showAutoAchieve"
       class="c-achievements-tab__header"
     >
       <div v-if="achCountdown > 0">
-        Automatically gain the next missing Achievement in
-        {{ timeDisplayNoDecimals(achCountdown) }}<span v-if="!isAutoAchieveActive"> once Auto is turned on</span>.
-        (left-to-right, top-to-bottom)
+        <span v-if="!isAutoAchieveActive">如果自动成就是开启的，</span>{{ timeDisplayNoDecimals(achCountdown) }}之后即可获得下一个未获得的成就。
+        (从左到右，从上到下)
       </div>
       <div v-else-if="missingAchievements !== 0">
-        Automatically gain the next missing Achievement as soon as you enable Auto Achievements.
-        (left-to-right, top-to-bottom)
+        下一个未获得的成就将在自动成就打开时自动获得。
+        (从左到右，从上到下)
       </div>
       <div v-if="totalCountdown > 0">
-        You will regain all remaining achievements after {{ timeDisplayNoDecimals(totalCountdown) }} if Auto
-        Achievement <span v-if="isAutoAchieveActive">stays enabled</span><span v-else>is turned on</span>.
+        如果<span v-if="isAutoAchieveActive">自动成就保持开启</span><span v-else>启用自动成就</span>，{{ timeDisplayNoDecimals(totalCountdown) }}之后即可获得剩余所有成就。
       </div>
       <br>
     </div>

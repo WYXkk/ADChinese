@@ -99,10 +99,10 @@ export default {
     },
     achievedTime() {
       if (!player.speedrun.isActive) return null;
-      if (this.achievementTime === undefined) return "Not Achieved yet";
+      if (this.achievementTime === undefined) return "尚未获得";
       return this.achievementTime === 0
-        ? "Given at Speedrun start"
-        : `Achieved after ${TimeSpan.fromMilliseconds(this.achievementTime).toStringShort()}`;
+        ? "速通开始时立即获得"
+        : `速通开始后 ${TimeSpan.fromMilliseconds(this.achievementTime).toStringShort()}获得`;
     }
   },
   beforeDestroy() {
@@ -212,7 +212,7 @@ export default {
             :class="{ 'o-pelle-disabled': isDisabled }"
             data-v-normal-achievement
           >
-            Reward: {{ config.reward }}
+            奖励：{{ config.reward }}
             <EffectDisplay
               v-if="config.formatEffect"
               br

@@ -12,7 +12,7 @@ export default {
   <div class="l-achievements-tab">
     <div class="c-achievements-tab__header">
       <span>
-        Secret Achievements are optional and give no bonuses.
+        隐藏成就是非必要的游戏内容，不提供任何游戏加成。
       </span>
     </div>
     <div class="l-achievement-grid">
